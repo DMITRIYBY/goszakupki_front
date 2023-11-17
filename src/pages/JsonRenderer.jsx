@@ -1,6 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
+import axios from "axios";
 
-const JsonRenderer = ({ data }) => {
+const JsonRenderer = () => {
+
+    const [data, setData] = useState({})
+    const { id } = useParams();
+    console.log(id)
+    useEffect(() => {
+        // Определите функцию для выполнения запроса
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://84.201.129.132:4100/client/tender?id=${id}`);
+                setData(response.data); // Обновите состояние данными из ответа
+                console.log(response.data)
+            } catch (error) {
+                console.error('Ошибка при выполнении запроса:', error);
+            }
+        };
+        // Вызовите функцию для выполнения запроса
+        fetchData();
+
+
+    },[]);
+
     const renderData = (obj, depth = 0) => {
         const keys = Object.keys(obj);
         return keys.map((key) => {
