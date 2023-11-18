@@ -2,10 +2,10 @@ import {FC, Fragment, useEffect, useState} from "react";
 import {TenderPreiewCard} from "../../components/TenderPreviewCard/TenderPreiewCard";
 import {PageContainer} from "../TenderCard/styles";
 import tendersDB from './many_tenders.json'
-import {CatalogPage} from "./styles";
+import {CatalogPage, DocumentsCount} from "./styles";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {TextBlack22pxRegular} from "../../constants/fonts";
+import {TextBlack14pxRegular, TextBlack22pxRegular} from "../../constants/fonts";
 
 const test_catalog_data = [
     {
@@ -403,7 +403,7 @@ export const Catalog: FC = () => {
         // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://84.201.129.132:4100/client/tenders?page=${currentPage}&perPage=10`);
+                const response = await axios.get(`http://51.250.27.179:4100/client/tenders?page=${currentPage}&perPage=10`);
                 setTenders(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -429,6 +429,9 @@ export const Catalog: FC = () => {
                         <TenderPreiewCard key={index} jsonData={item} />
                     ) : null
                 ))}
+                <DocumentsCount>
+                    <TextBlack14pxRegular>Всего документов: 123</TextBlack14pxRegular>
+                </DocumentsCount>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                     <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                         Предыдущая страница
@@ -438,7 +441,6 @@ export const Catalog: FC = () => {
                         Следующая страница
                     </button>
                 </div>
-
             </CatalogPage>
         </Fragment>
     );

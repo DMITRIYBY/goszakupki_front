@@ -11,7 +11,7 @@ const JsonRenderer = () => {
         // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://84.201.129.132:4100/client/tender?id=${id}`);
+                const response = await axios.get(`http://51.250.27.179:4100/client/tender?id=${id}`);
                 setData(response.data); // Обновите состояние данными из ответа
                 console.log(response.data)
             } catch (error) {

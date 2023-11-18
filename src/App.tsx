@@ -6,6 +6,7 @@ import JsonRenderer from "./pages/JsonRenderer";
 import {Catalog} from "./pages/Catalog/Catalog";
 import {FlexTextColumn} from "./containers/containers";
 import {Route, Router, Routes} from "react-router-dom";
+import {ContractsPage} from "./pages/ContractsPage/ContractsPage";
 
 const test_data = [
     {
@@ -409,6 +410,7 @@ function App() {
       <Routes>
           {/*<TenderCard />*/}
             <Route path="/" element={<Catalog />} />
+            <Route path="/contracts" element={<ContractsPage />} />
             <Route path="/tender/:id" element={<JsonRenderer />} />
             {/*<JsonRenderer data={test_data} />*/}
       </Routes>
