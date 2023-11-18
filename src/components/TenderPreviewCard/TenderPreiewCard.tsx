@@ -38,7 +38,7 @@ export const TenderPreiewCard: FC<ITender> = ({jsonData}) => {
                                 : 'Нет данных'}
                         </TextBlue16pxSemiBold>
                         {jsonData?.commonInfo?.purchaseNumber && (
-                            <Link to={`/tender/${jsonData?.purchaseResponsibleInfo?.responsibleOrgInfo?.regNum}`}>
+                            <Link to={`/tender/${jsonData?.commonInfo?.purchaseNumber}`}>
                                 <TextBlue16pxSemiBold style={{width: '40%'}}>
                                     № {jsonData.commonInfo.purchaseNumber}
                                 </TextBlue16pxSemiBold>

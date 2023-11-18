@@ -1,57 +1,67 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const JsonRenderer = () => {
+    const [data, setData] = useState({});
+    const [openBlocks, setOpenBlocks] = useState({});
 
-    const [data, setData] = useState({})
     const { id } = useParams();
-    console.log(id)
+
     useEffect(() => {
-        // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://51.250.27.179:4100/client/tender?id=${id}`);
-                setData(response.data); // Обновите состояние данными из ответа
-                console.log(response.data)
+                setData(response.data);
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
             }
         };
-        // Вызовите функцию для выполнения запроса
+
         fetchData();
+    }, [id]);
 
-
-    },[]);
+    const toggleBlock = (key) => {
+        setOpenBlocks((prevOpenBlocks) => ({
+            ...prevOpenBlocks,
+            [key]: !prevOpenBlocks[key],
+        }));
+    };
 
     const renderData = (obj, depth = 0) => {
         const keys = Object.keys(obj);
+
         return keys.map((key) => {
             const value = obj[key];
             const isObject = typeof value === 'object';
+            const isOpen = openBlocks[key] || (isObject && depth < 2); // Скрыть только блоки с 3-го уровня вложенности и выше
 
             const itemStyle = {
-                paddingLeft: `${depth * 10}px`, // Пример: увеличение отступа на 20 пикселей за каждый уровень вложенности
+                paddingLeft: `${depth * 10}px`,
             };
 
             return (
                 <div key={key} className={`item ${isObject ? 'nested-item' : ''}`} style={itemStyle}>
-                    {isObject ? (
-                        <div>
-                            <strong>{key}:</strong>
-                            {renderData(value, depth + 1)}
-                        </div>
-                    ) : (
-                        <div>
-                            <strong>{key}:</strong> {value}
-                        </div>
-                    )}
+                    <div>
+                        {isObject && depth >= 2 && (
+                            <button
+                                style={{border: 'none', background: 'none'}}
+                                className="arrow-button"
+                                onClick={() => toggleBlock(key)}
+                            >
+                                {isOpen ? '▲' : '▶'}
+                            </button>
+                        )}
+                        <strong>{key}:</strong>
+                    </div>
+                    {isObject && isOpen && <div>{renderData(value, depth + 1)}</div>}
+                    {!isObject && <div>{value}</div>}
                 </div>
             );
         });
     };
 
-    return <div className="json-data" style={{marginLeft: '10%'}}>{renderData(data)}</div>;
+    return <div className="json-data" style={{ marginLeft: '10%' }}>{renderData(data)}</div>;
 };
 
 export default JsonRenderer;
