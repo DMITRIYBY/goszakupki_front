@@ -51,7 +51,7 @@ const JsonRenderer = () => {
         });
     };
 
-    return <div className="json-data">{renderData(data)}</div>;
+    return <div className="json-data" style={{marginLeft: '10%'}}>{renderData(data)}</div>;
 };
 
 export default JsonRenderer;
