@@ -397,6 +397,7 @@ const test_catalog_data = [
 
 export const Catalog: FC = () => {
     const [tenders, setTenders] = useState([]);
+    const [tendersCount, setTendersCount] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -410,8 +411,18 @@ export const Catalog: FC = () => {
             }
         };
 
+        const fetchTendersCount = async () => {
+            try {
+                const response = await axios.get(`http://51.250.27.179:4100/client/tendersCount`);
+                setTendersCount(response.data); // Обновите состояние данными из ответа
+            } catch (error) {
+                console.error('Ошибка при выполнении запроса:', error);
+            }
+        };
+
         // Вызовите функцию для выполнения запроса
         fetchData();
+        fetchTendersCount();
 
     }, [currentPage]); // Зависимость от currentPage для повторного выполнения при изменении страницы
 
@@ -430,7 +441,7 @@ export const Catalog: FC = () => {
                     ) : null
                 ))}
                 <DocumentsCount>
-                    <TextBlack14pxRegular>Всего документов: 123</TextBlack14pxRegular>
+                    <TextBlack14pxRegular>Всего документов: {tendersCount}</TextBlack14pxRegular>
                 </DocumentsCount>
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                     <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
