@@ -6,6 +6,6 @@ export const PrevContainer = styled.div`
   width: 80%;
   margin-left: 10%;
   background-color: #FFFFFF;
-  height: 200px;
+  height: auto;
   padding: 15px;
 `;

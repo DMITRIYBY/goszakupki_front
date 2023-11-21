@@ -45,19 +45,22 @@ export const TenderPreiewCard: FC<ITender> = ({jsonData}) => {
                             </Link>
                         )}
                     </FlexTextRow>
-                    <FlexTextColumn style={{gap: '10px', marginTop: '10px'}}>
+                    <FlexTextColumn style={{gap: '10px', marginTop: '10px', paddingRight: '10px'}}>
                         <FlexRow>
                             <TextGray14pxRegular>Тип заявки</TextGray14pxRegular>
                             <TextBlack14pxRegular>
-                                {jsonData?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.IKZInfo?.KVRInfo?.['ns4:KVR']?.name
-                                    ? jsonData.notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.IKZInfo.KVRInfo['ns4:KVR'].name
+                                {jsonData?.commonInfo.purchaseObjectInfo
+                                    ? jsonData.commonInfo.purchaseObjectInfo
                                     : 'Нет данных'
                                 }
                             </TextBlack14pxRegular>
                         </FlexRow>
                         <FlexRow>
                             <TextGray14pxRegular>Объём закупки</TextGray14pxRegular>
-                            <TextBlue14pxRegular>ГОС ПИДОПЫВ</TextBlue14pxRegular>
+                            <TextBlue14pxRegular>{jsonData?.purchaseResponsibleInfo?.responsibleOrgInfo?.fullName
+                                ? jsonData.purchaseResponsibleInfo.responsibleOrgInfo.fullName
+                                : 'Нет данных'
+                            }</TextBlue14pxRegular>
                         </FlexRow>
                         <FlexRow>
                             <TextGray14pxRegular>Заказчик</TextGray14pxRegular>
