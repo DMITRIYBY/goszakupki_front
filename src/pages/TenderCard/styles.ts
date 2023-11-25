@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {TextBlue14pxRegular} from "../../constants/fonts";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -35,4 +36,7 @@ export const BorderOpeningContainer = styled(BorderedComtainer)`
 `;
 export const BorderFitContaienr = styled(BorderedComtainer)`
   padding: 0px;
+`;
+export const Atext14pxBlue = styled(TextBlue14pxRegular)`
+
 `;

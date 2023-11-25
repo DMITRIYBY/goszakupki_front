@@ -12,6 +12,12 @@ export const FlexTextRow = styled.div`
   width: 100%;
   justify-content: flex-start;
 `;
+export const FlexTextRowAdapted = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+`;
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;

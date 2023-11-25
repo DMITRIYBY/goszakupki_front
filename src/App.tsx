@@ -412,6 +412,7 @@ function App() {
             <Route path="/" element={<Catalog />} />
             <Route path="/contracts" element={<ContractsPage />} />
             <Route path="/tender/:id" element={<JsonRenderer />} />
+          <Route path="/testtender" element={<TenderCard />} />
             {/*<JsonRenderer data={test_data} />*/}
       </Routes>
       </Fragment>
