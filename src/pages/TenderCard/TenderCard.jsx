@@ -1,4 +1,4 @@
-import {FC, Fragment, useState} from 'react'
+import {FC, Fragment, useState, useEffect} from 'react'
 import {
     Atext14pxBlue,
     BorderedComtainer, BorderFitContaienr,
@@ -17,6 +17,9 @@ import {
 import {FlexTextColumn, FlexTextRow} from "../../containers/containers";
 import {ReactComponent as Arrow} from "../../assets/icons/arrow.svg";
 import {Menu} from "../../components/Menu/Menu";
+import axios from "axios";
+import {useParams} from "react-router-dom";
+import testTender1 from '../../components/testTender1'
 
 const tender_info = {
     "appAbsence": [],
@@ -419,8 +422,21 @@ const tender_info = {
 export const TenderCard = () => {
 
     const [tender, setTender] = useState(tender_info)
-
+    const { id } = useParams();
     const [isSecondContainerVisible, setSecondContainerVisible] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://51.250.27.179:4100/client/tender?id=${id}`);
+                setTender(response.data);
+            } catch (error) {
+                console.error('Ошибка при выполнении запроса:', error);
+            }
+        };
+
+        fetchData();
+    },[id])
 
     // Обработчик клика по кнопке
     const handleClick = () => {
@@ -428,103 +444,103 @@ export const TenderCard = () => {
         setSecondContainerVisible(!isSecondContainerVisible);
     };
 
-    return(
+    return (
         <Fragment>
             <PageContainer>
                 <LeftSideSection35>
-
                     <BorderedComtainer>
                         <TextBlack14pxBold>Общая информация</TextBlack14pxBold>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Номер извещания</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].commonInfo.purchaseNumber}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.purchaseNumber}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Наименование объекта закупки</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].commonInfo.purchaseObjectInfo}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.purchaseObjectInfo}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Способ определения поставщика (подрядчика, исполнителя)</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].commonInfo.placingWay.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.placingWay?.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
-                            <TextGray14pxRegular>Наименование электронной площадки в информационно - телекоммуникационной сети “Интернет”</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].commonInfo.ETP.name}</TextBlack14pxRegular>
+                            <TextGray14pxRegular>Наименование электронной площадки</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.ETP?.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Заказчик</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo.responsibleOrgInfo.fullName}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.purchaseResponsibleInfo?.responsibleOrgInfo?.fullName}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Официальный сайт</TextGray14pxRegular>
+                            <a href={'https://zakupki.gov.ru/epz/main/public/home.htmlhtki.gov.ru/epz/main/public/'}>
                             <TextBlack14pxRegular>https://zakupki.gov.ru/epz/main/public/home.htmlhtki.gov.ru/epz/main/public/</TextBlack14pxRegular>
+                            </a>
                         </FlexTextColumn>
                     </BorderedComtainer>
-                    <BorderedComtainer>
-                        <TextBlack14pxBold>Порядок размещения заказа</TextBlack14pxBold>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Дата публикации извещения</TextGray14pxRegular>
-                            <TextBlack14pxRegular>31.12.2019 14:23 (МСК +00:00)</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Дата и время окончания подачи заявок</TextGray14pxRegular>
-                            <TextBlack14pxRegular>15.01.2020 в 08:00 (МСК +00:00)</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Место подачи заявок</TextGray14pxRegular>
-                            <TextBlack14pxRegular >{tender.tender[0].printFormInfo.url}</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Порядок подачи заявок</TextGray14pxRegular>
-                            <TextBlack14pxRegular>В соответствии с пунктами 25, 26 раздела I документации</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Дата рассмотрения и оценки заявок</TextGray14pxRegular>
-                            <TextBlack14pxRegular>16.01. 2020</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Дата и время проведения аукциона в электронной форме</TextGray14pxRegular>
-                            <TextBlack14pxRegular>17.01.2020 в 09:00 (МСК +00:00)</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                    </BorderedComtainer>
-                    <BorderedComtainer>
-                        <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Организация</TextGray14pxRegular>
-                            <TextBlack14pxRegular>АДМИНИСТРАЦИЯ ГОРОДА СУРГУТА</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Фактический адрес</TextGray14pxRegular>
-                            <TextBlack14pxRegular>Российская Федерация, 65668, Ханты - Мансийский Автономный округ - Югра АО,
-                                Сургут г, УЛ</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Почтовый адрес</TextGray14pxRegular>
-                            <TextBlack14pxRegular>Российская Федерация, 567876, Ханты - Мансийский Автономный округ - Югра АО, Сургут г, УЛ ЭНГЕЛЬСА, 8</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Контакты</TextGray14pxRegular>
-                            <TextBlack14pxRegular>Штриккер Р. В.</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Телефон</TextGray14pxRegular>
-                            <TextBlack14pxRegular>+ 7 (646) 646-65-78</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Факс</TextGray14pxRegular>
-                            <TextBlack14pxRegular>34567</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                        <FlexTextColumn>
-                            <TextGray14pxRegular>Электронная почта</TextGray14pxRegular>
-                            <TextBlack14pxRegular>cscdsvd@gmail.com</TextBlack14pxRegular>
-                        </FlexTextColumn>
-                    </BorderedComtainer>
+                    {/*<BorderedComtainer>*/}
+                    {/*    <TextBlack14pxBold>Порядок размещения заказа</TextBlack14pxBold>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Дата публикации извещения</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>31.12.2019 14:23 (МСК +00:00)</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Дата и время окончания подачи заявок</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>15.01.2020 в 08:00 (МСК +00:00)</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Место подачи заявок</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular >{tender?.tender?.[0]?.printFormInfo?.url}</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Порядок подачи заявок</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>В соответствии с пунктами 25, 26 раздела I документации</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Дата рассмотрения и оценки заявок</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>16.01. 2020</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Дата и время проведения аукциона в электронной форме</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>17.01.2020 в 09:00 (МСК +00:00)</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*</BorderedComtainer>*/}
+                    {/*<BorderedComtainer>*/}
+                    {/*    <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Организация</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>АДМИНИСТРАЦИЯ ГОРОДА СУРГУТА</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Фактический адрес</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>Российская Федерация, 65668, Ханты - Мансийский Автономный округ - Югра АО, Сургут г, УЛ</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Почтовый адрес</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>Российская Федерация, 567876, Ханты - Мансийский Автономный округ - Югра АО, Сургут г, УЛ ЭНГЕЛЬСА, 8</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Контакты</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>Штриккер Р. В.</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Телефон</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>+ 7 (646) 646-65-78</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Факс</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>34567</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*    <FlexTextColumn>*/}
+                    {/*        <TextGray14pxRegular>Электронная почта</TextGray14pxRegular>*/}
+                    {/*        <TextBlack14pxRegular>cscdsvd@gmail.com</TextBlack14pxRegular>*/}
+                    {/*    </FlexTextColumn>*/}
+                    {/*</BorderedComtainer>*/}
                 </LeftSideSection35>
                 <RightSideSection65>
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Цена контракта</TextGray14pxRegular>
-                            <TextBlack22pxBold>7 578 753, 00</TextBlack22pxBold>
+                            <TextBlack22pxBold>{tender.tender[0]?.notificationInfo?.contractConditionsInfo?.maxPriceInfo?.maxPrice}</TextBlack22pxBold>
                         </FlexTextColumn>
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Обеспечение заявки</TextGray14pxRegular>
@@ -539,39 +555,67 @@ export const TenderCard = () => {
                         <TextBlack14pxBold>Условия контракта</TextBlack14pxBold>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Начальная (максимальная) цена контракта</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.contractConditionsInfo.maxPriceInfo.maxPrice} российских рублей</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.contractConditionsInfo?.maxPriceInfo?.maxPrice} российских рублей</TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Источник финансирования</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.budgetInfo.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.budgetInfo?.name}</TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Идентификационный код закупки</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.IKZInfo.purchaseCode}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.IKZInfo?.purchaseCode}</TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Место доставки товара, выполнения работы или оказания услуги</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.deliveryPlacesInfo.deliveryPlaceInfo.kladr.fullName}, {tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.deliveryPlacesInfo.deliveryPlaceInfo.deliveryPlace}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>
+                                {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.deliveryPlacesInfo?.deliveryPlaceInfo?.kladr?.fullName},
+                                {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.deliveryPlacesInfo?.deliveryPlaceInfo?.deliveryPlace}
+                            </TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Сроки поставки товара или завершения работы либо график оказания услуг</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo.responsibleOrgInfo.fullName}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleOrgInfo?.fullName}</TextBlack14pxRegular>
                         </FlexTextRow>
                     </BorderedComtainer>
                     <BorderedComtainer>
                         <TextBlack14pxBold>Преимущества и требования к участникам</TextBlack14pxBold>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Преимущества</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.contractConditionsInfo.maxPriceInfo.maxPrice} российских рублей</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.preferensesInfo?.preferenseInfo?.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Требования к участникам</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.applicationGuarantee.procedureInfo}</TextBlack14pxRegular>
+                            <ul>
+                                {
+                                    tender.tender[0].notificationInfo.requirementsInfo.requirementInfo.map((item,index) => {
+                                        <TextBlack14pxRegular key={index}>{item?.name}</TextBlack14pxRegular>
+                                    })
+                                }
+                            </ul>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Ограничения</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].commonInfo.placingWay.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].commonInfo?.placingWay?.name}</TextBlack14pxRegular>
                         </FlexTextRow>
+                    </BorderedComtainer>
+                    <BorderedComtainer>
+                        <TextBlack14pxBold>Обеспечение исполнения контракта</TextBlack14pxBold>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>
+                            <TextBlack14pxRegular></TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Размер обеспечения исполнения контракта</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].commonInfo?.placingWay?.name}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Порядок предоставления обеспечения исполнения контракта, требования к обеспечению</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.procedureInfo}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Платежные реквизиты для обеспечения исполнения контракта</TextGray14pxRegular>
+                            <TextBlack14pxRegular>р/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.settlementAccount} л/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount}, БИК {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik}</TextBlack14pxRegular>
+                        </FlexTextColumn>
                     </BorderedComtainer>
                     <BorderOpeningContainer>
                         <FlexTextRow style={{alignItems: 'center'}}>
@@ -582,7 +626,7 @@ export const TenderCard = () => {
                             <BorderFitContaienr >
                                 <FlexTextColumn>
                                     <a href={`${tender.clarification[0]?.commonInfo?.href}`}>
-                                        <TextBlue14pxRegular>Запрос - ответ от {tender.clarification[0].commonInfo.docPublishDTInEIS}</TextBlue14pxRegular>
+                                        <TextBlue14pxRegular>Запрос - ответ от {tender.clarification[0]?.commonInfo?.docPublishDTInEIS}</TextBlue14pxRegular>
                                     </a>
                                 </FlexTextColumn>
                             </BorderFitContaienr>
