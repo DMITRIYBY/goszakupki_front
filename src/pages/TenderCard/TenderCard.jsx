@@ -19,212 +19,13 @@ import {ReactComponent as Arrow} from "../../assets/icons/arrow.svg";
 import {Menu} from "../../components/Menu/Menu";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-import testTender1 from '../../components/testTender1'
 import {format, parseISO} from "date-fns";
 
 const tender_info = {
     "appAbsence": [],
     "clarification": [],
     "noticationCancel": [],
-    "protocol": [
-        {
-            "_id": "6561a67d63ca1e084f17af86",
-            "id": "43013313",
-            "externalId": "0101500000623000043-1-2",
-            "versionNumber": "1",
-            "foundationDocInfo": {
-                "foundationDocNumber": "№0101500000623000043",
-                "foundationDocNumberExternal": "krista.02800000.23913465863"
-            },
-            "commonInfo": {
-                "purchaseNumber": "0101500000623000043",
-                "docNumber": "ИЭА1",
-                "publishDTInEIS": "2023-11-07T14:47:30+03:00",
-                "href": "https://lk.zakupki.gov.ru/44fz/priz/notice/ea20/view/documents.html?orderId=30762603",
-                "docNumberExternal": "0101500000623000043-1-2",
-                "publishDTInETP": "2023-11-07T14:46:49+03:00",
-                "procedureDT": "2023-11-07T14:46:49+03:00",
-                "signDT": "2023-11-07+03:00",
-                "hrefExternal": "https://etp-ets.ru/44/ea21/protocol/final-request/view/421639/?eventId=2012071"
-            },
-            "protocolPublisherInfo": {
-                "publisherOrg": {
-                    "regNum": "01015000006",
-                    "consRegistryNum": "802J0959",
-                    "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ",
-                    "shortName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ВЛАСТИ РБ В Г. МОСКВЕ",
-                    "postAddress": "Российская Федерация, 105066, Москва, УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6/СТР. 2",
-                    "factAddress": "Российская Федерация, 105066, Москва, УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6/СТР. 2",
-                    "INN": "9701186367",
-                    "KPP": "770101001"
-                },
-                "publisherRole": "CU"
-            },
-            "extPrintFormInfo": {
-                "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=A54BB3D205294634B5855F11823BF7DD",
-                "fileType": "xml",
-                "commissionSignatures": {
-                    "memberSignature": [
-                        {
-                            "memberNumber": "1"
-                        },
-                        {
-                            "memberNumber": "2"
-                        },
-                        {
-                            "memberNumber": "3"
-                        }
-                    ]
-                }
-            },
-            "attachmentsInfo": {
-                "attachmentInfo": [
-                    {
-                        "publishedContentId": "43DF1E46BA2F424BB81519C08171A0B0",
-                        "fileName": "Электронный документ, полученный из внешней системы.xml",
-                        "fileSize": "36360",
-                        "docDescription": "Электронный документ, полученный из внешней системы",
-                        "docDate": "2023-11-07T14:47:26+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=43DF1E46BA2F424BB81519C08171A0B0",
-                        "cryptoSigns": {}
-                    },
-                    {
-                        "publishedContentId": "098ADD5533AAC695E06334548D0A2C45",
-                        "fileName": "Протокол подведения итогов_07.11.2023_14.42.53_0101500000623000043_2_1.docx",
-                        "fileSize": "32541",
-                        "docDescription": "Протокол подведения итогов_07.11.2023_14.42.53_0101500000623000043_2_1.docx",
-                        "docDate": "2023-11-07T14:47:26+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=098ADD5533AAC695E06334548D0A2C45",
-                        "cryptoSigns": {}
-                    }
-                ]
-            },
-            "protocolInfo": {
-                "commissionInfo": {
-                    "commissionName": "Единая комиссии по осуществлению закупок Аппарата по обеспечению деятельности органов государственной власти Республики Башкортостан в г. Москве",
-                    "commissionMembers": {
-                        "commissionMember": [
-                            {
-                                "memberNumber": "1",
-                                "nameInfo": {
-                                    "lastName": "Панченко",
-                                    "firstName": "Дмитрий",
-                                    "middleName": "Владимирович"
-                                },
-                                "role": {
-                                    "code": "2",
-                                    "name": "Зам. председателя комиссии",
-                                    "rightVote": "true"
-                                }
-                            },
-                            {
-                                "memberNumber": "2",
-                                "nameInfo": {
-                                    "lastName": "Гильмутдинов",
-                                    "firstName": "Булат",
-                                    "middleName": "Рависович"
-                                },
-                                "role": {
-                                    "code": "4",
-                                    "name": "Член комиссии",
-                                    "rightVote": "true"
-                                }
-                            },
-                            {
-                                "memberNumber": "3",
-                                "nameInfo": {
-                                    "lastName": "Гайсина",
-                                    "firstName": "Анна",
-                                    "middleName": "Альбертовна"
-                                },
-                                "role": {
-                                    "code": "8",
-                                    "name": "Секретарь комиссии",
-                                    "rightVote": "true"
-                                }
-                            }
-                        ]
-                    }
-                },
-                "applicationsInfo": {
-                    "applicationInfo": {
-                        "commonInfo": {
-                            "appNumber": "1",
-                            "appDT": "2023-11-02T12:57:18+03:00",
-                            "admissionResultsInfo": {
-                                "admissionResultInfo": [
-                                    {
-                                        "commissionMemberInfo": {
-                                            "memberNumber": "1",
-                                            "nameInfo": {
-                                                "lastName": "Панченко",
-                                                "firstName": "Дмитрий",
-                                                "middleName": "Владимирович"
-                                            },
-                                            "role": {
-                                                "code": "2",
-                                                "name": "Зам. председателя комиссии",
-                                                "rightVote": "true"
-                                            }
-                                        },
-                                        "admitted": "true"
-                                    },
-                                    {
-                                        "commissionMemberInfo": {
-                                            "memberNumber": "2",
-                                            "nameInfo": {
-                                                "lastName": "Гильмутдинов",
-                                                "firstName": "Булат",
-                                                "middleName": "Рависович"
-                                            },
-                                            "role": {
-                                                "code": "4",
-                                                "name": "Член комиссии",
-                                                "rightVote": "true"
-                                            }
-                                        },
-                                        "admitted": "true"
-                                    },
-                                    {
-                                        "commissionMemberInfo": {
-                                            "memberNumber": "3",
-                                            "nameInfo": {
-                                                "lastName": "Гайсина",
-                                                "firstName": "Анна",
-                                                "middleName": "Альбертовна"
-                                            },
-                                            "role": {
-                                                "code": "8",
-                                                "name": "Секретарь комиссии",
-                                                "rightVote": "true"
-                                            }
-                                        },
-                                        "admitted": "true"
-                                    }
-                                ]
-                            }
-                        },
-                        "finalPrice": "29584.99",
-                        "lastPriceOffer": {
-                            "price": "29584.99",
-                            "date": "2023-11-02T12:57:18+03:00",
-                            "increaseInitialPrice": "false"
-                        },
-                        "admittedInfo": {
-                            "appAdmittedInfo": {
-                                "admitted": "true",
-                                "appRating": "1"
-                            }
-                        }
-                    }
-                },
-                "abandonedReason": {
-                    "code": "EA20IEAOR",
-                    "name": "По окончании срока подачи заявок подана только одна заявка на участие в закупке (п. 1 ч. 1 ст. 52 Закона № 44-ФЗ). Заявка соответствует требованиям"
-                }
-            }
-        }
-    ],
+    "protocol": [],
     "protocolCancel": [],
     "protocolDeviation": [],
     "protocolEvDevCancel": [],
@@ -232,66 +33,66 @@ const tender_info = {
     "result": [],
     "tender": [
         {
-            "_id": "6561a40a63ca1e084f16ea5e",
-            "id": "33988584",
-            "externalId": "krista.02800000.23913465863",
+            "_id": "6561a40c63ca1e084f16eb0e",
+            "id": "33990592",
+            "externalId": "14281785",
             "versionNumber": "1",
             "commonInfo": {
-                "purchaseNumber": "0101500000623000043",
-                "docNumber": "№0101500000623000043",
-                "plannedPublishDate": "2023-10-25+03:00",
-                "publishDTInEIS": "2023-10-25T14:06:00.387+03:00",
-                "href": "https://zakupki.gov.ru/epz/order/notice/ea20/view/common-info.html?regNumber=0101500000623000043",
+                "purchaseNumber": "0148300014523000170",
+                "docNumber": "№0148300014523000170",
+                "plannedPublishDate": "2023-10-26+03:00",
+                "publishDTInEIS": "2023-10-26T10:08:37.330+03:00",
+                "href": "https://zakupki.gov.ru/epz/order/notice/ea20/view/common-info.html?regNumber=0148300014523000170",
                 "notPublishedOnEIS": "true",
                 "placingWay": {
                     "code": "EAP20",
                     "name": "Электронный аукцион"
                 },
                 "ETP": {
-                    "code": "ETP_MMVB",
-                    "name": "Электронная торговая площадка «Фабрикант»",
-                    "url": "http://www.etp-ets.ru"
+                    "code": "ETP_EETP",
+                    "name": "АО «ЕЭТП»",
+                    "url": "http://roseltorg.ru"
                 },
                 "contractConclusionOnSt83Ch2": "true",
-                "purchaseObjectInfo": "Поставка комплектующих для персонального компьютера"
+                "purchaseObjectInfo": "Поставка автогидроподъемника"
             },
             "purchaseResponsibleInfo": {
                 "responsibleOrgInfo": {
-                    "regNum": "01015000006",
-                    "consRegistryNum": "802J0959",
-                    "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ",
-                    "shortName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ",
-                    "postAddress": "105066, МОСКВА Г., УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6, СТР. 2",
-                    "factAddress": "105066, МОСКВА Г., УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6, СТР. 2",
-                    "INN": "9701186367",
-                    "KPP": "770101001"
+                    "regNum": "01483000145",
+                    "consRegistryNum": "45383020",
+                    "fullName": "АДМИНИСТРАЦИЯ ПОСЕЛЕНИЯ МОСКОВСКИЙ",
+                    "shortName": "АДМИНИСТРАЦИЯ ПОСЕЛЕНИЯ МОСКОВСКИЙ",
+                    "postAddress": "город Москва, поселение Московский, город Московский, микрорайон 1-й",
+                    "factAddress": "город Москва, поселение Московский, город Московский, микрорайон 1-й",
+                    "INN": "5003057325",
+                    "KPP": "775101001"
                 },
                 "responsibleRole": "CU",
                 "responsibleInfo": {
-                    "orgPostAddress": "105066, МОСКВА Г., УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6, СТР. 2",
-                    "orgFactAddress": "105066, МОСКВА Г., УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6, СТР. 2",
+                    "orgPostAddress": "город Москва, поселение Московский, город Московский, микрорайон 1-й",
+                    "orgFactAddress": "город Москва, поселение Московский, город Московский, микрорайон 1-й",
                     "contactPersonInfo": {
-                        "lastName": "Гильмутдинов",
-                        "firstName": "Булат",
-                        "middleName": "Рависович"
+                        "lastName": "Тихонов",
+                        "firstName": "А",
+                        "middleName": "Б"
                     },
-                    "contactEMail": "gilmutdinov.br@bashkortostan.ru",
-                    "contactPhone": "84956214030",
-                    "addInfo": "КОНТАКТНАЯ ИНФОРМАЦИЯ: Заказчик : АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ; Контактная информация : Местонахождение: 105066, МОСКВА Г., УЛ. ДОБРОСЛОБОДСКАЯ, Д. 6, СТР. 2; Телефон: 84956214030; E-mail: apparatmsk@bashkortostan.ru; Контактное лицо заказчика: Гильмутдинов Булат Рависович; Должность: Главный специалист-эксперт; Номер контактного телефона: 84956214030; E-mail: gilmutdinov.br@bashkortostan.ru;"
+                    "contactEMail": "mz@adm-moskovsky.ru",
+                    "contactPhone": "+7 (495) 841-81-47",
+                    "contactFax": "4959419147"
                 }
             },
             "printFormInfo": {
-                "url": "https://zakupki.gov.ru/epz/order/notice/printForm/view.html?regNumber=0101500000623000043"
+                "url": "https://zakupki.gov.ru/epz/order/notice/printForm/view.html?regNumber=0148300014523000170"
             },
             "attachmentsInfo": {
                 "attachmentInfo": [
                     {
-                        "publishedContentId": "088612DCE6C98CE8E06334548D0AC9C2",
-                        "fileName": "Приложение №1 - НМЦК.pdf.zip",
-                        "fileSize": "1720974",
-                        "docDescription": "Приложение №1 - НМЦК.pdf.zip",
-                        "docDate": "2023-10-25T11:03:16+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=088612DCE6C98CE8E06334548D0AC9C2",
+                        "publishedContentId": "0884317A699AFC34E06334548D0A21A5",
+                        "fileName": "протокол (1).docx",
+                        "fileSize": "13384",
+                        "docDescription": "Протокол НМЦК(Д)",
+                        "docDate": "2023-10-25T12:34:50+03:00",
+                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=0884317A699AFC34E06334548D0A21A5",
                         "docKindInfo": {
                             "code": "MRJ",
                             "name": "Обоснование начальной (максимальной) цены контракта"
@@ -299,12 +100,25 @@ const tender_info = {
                         "cryptoSigns": {}
                     },
                     {
-                        "publishedContentId": "0884E6DF2AA699D8E06334548D0A0A9F",
-                        "fileName": "Приложение №2 - Проект контракта .doc.zip",
-                        "fileSize": "225500",
-                        "docDescription": "Приложение №2 - Проект контракта .doc.zip",
-                        "docDate": "2023-10-25T11:03:16+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=0884E6DF2AA699D8E06334548D0A0A9F",
+                        "publishedContentId": "08848BDEE7EE98BCE06334548D0A2A77",
+                        "fileName": "ЦК по коммерческих оценка.xlsx",
+                        "fileSize": "15291",
+                        "docDescription": "Расчет НМЦК(Д)",
+                        "docDate": "2023-10-25T12:34:50+03:00",
+                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=08848BDEE7EE98BCE06334548D0A2A77",
+                        "docKindInfo": {
+                            "code": "MRJ",
+                            "name": "Обоснование начальной (максимальной) цены контракта"
+                        },
+                        "cryptoSigns": {}
+                    },
+                    {
+                        "publishedContentId": "08848BDEE7EC98BCE06334548D0A2A77",
+                        "fileName": "Поставка автогидроподъемника.doc",
+                        "fileSize": "144896",
+                        "docDescription": "Проект контракта (договора)",
+                        "docDate": "2023-10-25T12:34:50+03:00",
+                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=08848BDEE7EC98BCE06334548D0A2A77",
                         "docKindInfo": {
                             "code": "CP",
                             "name": "Проект контракта"
@@ -312,12 +126,12 @@ const tender_info = {
                         "cryptoSigns": {}
                     },
                     {
-                        "publishedContentId": "0884747F9F6E4E87E06334548D0AC816",
-                        "fileName": "Приложение №3 - Описание объекта закупки.docx.zip",
-                        "fileSize": "156622",
-                        "docDescription": "Приложение №3 - Описание объекта закупки.docx.zip",
-                        "docDate": "2023-10-25T11:03:16+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=0884747F9F6E4E87E06334548D0AC816",
+                        "publishedContentId": "0887122C00DCBC60E06334548D0A73F6",
+                        "fileName": "Техническое_задание_16025703-1.pdf",
+                        "fileSize": "64935",
+                        "docDescription": "Техническое задание",
+                        "docDate": "2023-10-25T12:34:50+03:00",
+                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=0887122C00DCBC60E06334548D0A73F6",
                         "docKindInfo": {
                             "code": "POD",
                             "name": "Описание объекта закупки"
@@ -325,12 +139,12 @@ const tender_info = {
                         "cryptoSigns": {}
                     },
                     {
-                        "publishedContentId": "0884E6DF2AA899D8E06334548D0A0A9F",
-                        "fileName": "Приложение №4 - Требования к содержанию заявки.docx.zip",
-                        "fileSize": "172764",
-                        "docDescription": "Приложение №4 - Требования к содержанию заявки.docx.zip",
-                        "docDate": "2023-10-25T11:03:16+03:00",
-                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=0884E6DF2AA899D8E06334548D0A0A9F",
+                        "publishedContentId": "08848BDEE7EA98BCE06334548D0A2A77",
+                        "fileName": "ElectronicAuction14281785.pdf",
+                        "fileSize": "93507",
+                        "docDescription": "ElectronicAuction14281785.pdf",
+                        "docDate": "2023-10-25T12:34:50+03:00",
+                        "url": "https://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=08848BDEE7EA98BCE06334548D0A2A77",
                         "docKindInfo": {
                             "code": "CAR",
                             "name": "Требование к содержанию, составу заявки на участие в закупке"
@@ -342,15 +156,15 @@ const tender_info = {
             "notificationInfo": {
                 "procedureInfo": {
                     "collectingInfo": {
-                        "startDT": "2023-10-25T14:06:00+03:00",
+                        "startDT": "2023-10-26T10:08:37+03:00",
                         "endDT": "2023-11-03T09:00:00+03:00"
                     },
                     "biddingDate": "2023-11-03+03:00",
-                    "summarizingDate": "2023-11-07+03:00"
+                    "summarizingDate": "2023-11-08+03:00"
                 },
                 "contractConditionsInfo": {
                     "maxPriceInfo": {
-                        "maxPrice": "29584.99",
+                        "maxPrice": "8800000",
                         "currency": {
                             "code": "RUB",
                             "name": "Российский рубль"
@@ -360,58 +174,81 @@ const tender_info = {
                 "customerRequirementsInfo": {
                     "customerRequirementInfo": {
                         "customer": {
-                            "regNum": "01015000006",
-                            "consRegistryNum": "802J0959",
-                            "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ"
+                            "regNum": "01483000145",
+                            "consRegistryNum": "45383020",
+                            "fullName": "АДМИНИСТРАЦИЯ ПОСЕЛЕНИЯ МОСКОВСКИЙ"
+                        },
+                        "applicationGuarantee": {
+                            "amount": "88000.00",
+                            "account": {
+                                "bik": "004525988",
+                                "settlementAccount": "03100643000000017300",
+                                "personalAccount": "04733830200",
+                                "creditOrgName": "ГУ БАНКА РОССИИ ПО ЦФО//УФК ПО Г. МОСКВЕ, г Москва"
+                            },
+                            "procedureInfo": "В соответствии с правилами и порядком, определенными оператором электронной торговой площадки",
+                            "part": "1.0"
+                        },
+                        "contractGuarantee": {
+                            "account": {
+                                "bik": "004525988",
+                                "settlementAccount": "03232643459520007300",
+                                "personalAccount": "05733830200",
+                                "creditOrgName": "ГУ Банка России по ЦФО//УФК по г.Москве"
+                            },
+                            "procedureInfo": "Контракт заключается после предоставления заказчику обеспечения исполнения контракта. Обеспечение исполнения контракта может быть представлено в виде безотзывной независимой гарантии или внесением денежных средств на указанный заказчиком счет, на котором в соответствии с законодательством Российской Федерации учитываются операции со средствами, поступающими заказчику, в размере обеспечения исполнения контракта, указанном в документации о закупках. Безотзывная независимая гарантия должна соответствовать требованиям, установленным Гражданским кодексом Российской Федерации, а также иным законодательством Российской Федерации.\nСпособ обеспечения исполнения контракта определяется участником закупки, с которым заключается контракт, самостоятельно.\nСрок внесения обеспечения - до момента заключения контракта».",
+                            "part": "30.0"
                         },
                         "contractConditionsInfo": {
                             "maxPriceInfo": {
-                                "maxPrice": "29584.99"
+                                "maxPrice": "8800000"
                             },
                             "mustPublicDiscussion": "false",
                             "IKZInfo": {
-                                "purchaseCode": "232970118636777010100100990010000242",
+                                "purchaseCode": "233500305732577510100100800010000244",
                                 "publishYear": "2023",
                                 "OKPD2Info": {
                                     "undefined": "0000"
                                 },
                                 "KVRInfo": {
                                     "KVR": {
-                                        "code": "242",
-                                        "name": "Закупка товаров, работ и услуг в сфере информационно-коммуникационных технологий"
+                                        "code": "244",
+                                        "name": "Прочая закупка товаров, работ и услуг"
                                     }
                                 },
-                                "customerCode": "29701186367770101001",
-                                "purchaseNumber": "0099",
+                                "customerCode": "35003057325775101001",
+                                "purchaseNumber": "0080",
                                 "purchaseOrderNumber": "001"
                             },
                             "tenderPlan2020Info": {
-                                "plan2020Number": "202301015000006002",
-                                "position2020Number": "202301015000006002000091"
+                                "plan2020Number": "202301483000145001",
+                                "position2020Number": "202301483000145001000082"
                             },
                             "contractExecutionPaymentPlan": {
                                 "contractExecutionTermsInfo": {
-                                    "notRelativeTermsInfo": {
-                                        "isFromConclusionDate": "true",
-                                        "endDate": "2023-12-25+03:00"
+                                    "relativeTermsInfo": {
+                                        "start": "1",
+                                        "startDayType": "working",
+                                        "term": "57",
+                                        "termDayType": "working"
                                     }
                                 },
                                 "financingSourcesInfo": {
                                     "budgetFinancingsInfo": {
                                         "budgetInfo": {
-                                            "code": "01021251",
-                                            "name": "Бюджет Республики Башкортостан"
+                                            "code": "73030502",
+                                            "name": "Бюджет поселения Московский"
                                         },
-                                        "budgetLevel": "20",
+                                        "budgetLevel": "30",
                                         "OKTMOInfo": {
-                                            "code": "80000000",
-                                            "name": "Муниципальные образования Республики Башкортостан"
+                                            "code": "45952000",
+                                            "name": "Муниципальные образования города Москвы (столицы Российской Федерации города федерального значения) / Внутригородские муниципальные образования города Москвы (см. также 45 300 000) / поселение Московский"
                                         }
                                     },
                                     "currentYear": "2023",
                                     "financeInfo": {
-                                        "total": "29584.99",
-                                        "currentYear": "29584.99",
+                                        "total": "8800000",
+                                        "currentYear": "8800000",
                                         "firstYear": "0",
                                         "secondYear": "0",
                                         "subsecYears": "0"
@@ -419,20 +256,22 @@ const tender_info = {
                                 },
                                 "stagesInfo": {
                                     "stageInfo": {
-                                        "sid": "6331191",
-                                        "externalSid": "23910427992",
+                                        "sid": "6334892",
+                                        "externalSid": "23832133",
                                         "termsInfo": {
-                                            "notRelativeTermsInfo": {
-                                                "isFromConclusionDate": "true",
-                                                "endDate": "2023-12-25+03:00"
+                                            "relativeTermsInfo": {
+                                                "start": "1",
+                                                "startDayType": "working",
+                                                "term": "57",
+                                                "termDayType": "working"
                                             }
                                         },
                                         "budgetFinancingsInfo": {
                                             "budgetFinancingInfo": {
-                                                "KBK": "80101029900002040242",
+                                                "KBK": "90005037950202040244",
                                                 "paymentYearInfo": {
-                                                    "total": "29584.99",
-                                                    "currentYear": "29584.99",
+                                                    "total": "8800000",
+                                                    "currentYear": "8800000",
                                                     "firstYear": "0",
                                                     "secondYear": "0",
                                                     "subsecYears": "0"
@@ -442,541 +281,593 @@ const tender_info = {
                                     }
                                 }
                             },
+                            "BOInfo": {
+                                "BONumber": "4538302023730001493",
+                                "BODate": "2023-10-25T00:00:00+03:00",
+                                "inputBOFlag": "auto"
+                            },
                             "deliveryPlacesInfo": {
                                 "deliveryPlaceInfo": {
-                                    "deliveryPlace": "г. Москва, ул. Доброслободская, 6, строение 2"
+                                    "deliveryPlace": "108811, г. Москва, г. Московский, микрорайон 1-й, д. 19а"
                                 }
                             },
                             "isOneSideRejectionSt95": "true"
                         },
                         "warrantyInfo": {
-                            "warrantyServiceRequirement": "в соответствии с действующим законодательством",
-                            "manufacturersWarrantyRequirement": "не менее 24 месяцев и исчисляется с момента подписания Заказчиком документа о приемке",
-                            "warrantyTerm": "не менее 24 месяцев и исчисляется с момента подписания Заказчиком документа о приемке"
+                            "warrantyTerm": "Срок гарантии качества на товар должен быть не менее срока, установленного производителем (заводом-изготовителем товара), определенного в руководстве (инструкции) по эксплуатации товара или в соответствии с гарантийным талоном производителя (завода-изготовителя) или формуляром, или сервисной книжкой. В случае если производитель (завод-изготовитель) не установил срок гарантии качества товара, то Поставщик предоставляет свои гарантийные обязательства сроком не менее 1 (одного) года с момента подписания уполномоченными представителями Сторон электронного структурированного Документа о приемке."
+                        },
+                        "provisionWarranty": {
+                            "amount": "88000",
+                            "part": "1.0",
+                            "procedureInfo": "в соответствии с контрактом",
+                            "account": {
+                                "bik": "004525988",
+                                "settlementAccount": "03232643459520007300",
+                                "personalAccount": "05733830200",
+                                "creditOrgName": "ГУ Банка России по ЦФО//УФК по г.Москве"
+                            }
                         }
                     }
                 },
                 "purchaseObjectsInfo": {
                     "notDrugPurchaseObjectsInfo": {
-                        "purchaseObject": [
-                            {
-                                "sid": "136527514",
-                                "externalSid": "23912483850",
-                                "OKPD2": {
-                                    "OKPDCode": "26.40.33.110",
-                                    "OKPDName": "Видеокамеры",
-                                    "characteristics": {
-                                        "characteristicsUsingTextForm": [
-                                            {
-                                                "sid": "69770824",
-                                                "externalSid": "23913746932",
-                                                "name": "HD-формат 5,7K;8K;Full HD 1080p;UHD 4K",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034516",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
+                        "purchaseObject": {
+                            "sid": "136544128",
+                            "externalSid": "173949847-1154803086",
+                            "OKPD2": {
+                                "OKPDCode": "29.10.59.270",
+                                "OKPDName": "Средства транспортные, оснащенные подъемниками с рабочими платформами",
+                                "characteristics": {
+                                    "characteristicsUsingTextForm": [
+                                        {
+                                            "sid": "69817737",
+                                            "externalSid": "1024753106-1320511080",
+                                            "name": "Максимальная рабочая высота подъема",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
                                             },
-                                            {
-                                                "sid": "69770825",
-                                                "externalSid": "23913746933",
-                                                "name": "Разрешение видео, пикселей",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034517",
-                                                        "qualityDescription": "не менее 1920 х\nне менее 1080"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770826",
-                                                "externalSid": "23913746934",
-                                                "name": "Матрица CMOS",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034518",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770827",
-                                                "externalSid": "23913746936",
-                                                "name": "Максимальная частота кадров",
-                                                "type": "2",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034519",
-                                                        "OKEI": {
-                                                            "code": "290",
-                                                            "nationalCode": "ГЦ",
-                                                            "name": "Герц"
-                                                        },
-                                                        "rangeSet": {
-                                                            "valueRange": {
-                                                                "minMathNotation": "greaterOrEqual",
-                                                                "min": "30"
-                                                            }
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091824",
+                                                    "externalSid": "enum-298582500",
+                                                    "OKEI": {
+                                                        "code": "006",
+                                                        "nationalCode": "М",
+                                                        "name": "Метр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "20"
                                                         }
                                                     }
                                                 }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817759",
+                                            "externalSid": "1024753111-1300565462",
+                                            "name": "Количество пассажирских мест (не считая водителя)",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
                                             },
-                                            {
-                                                "sid": "69770828",
-                                                "externalSid": "23913746937",
-                                                "name": "Крепление на монитор",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034520",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770834",
-                                                "externalSid": "23913746942",
-                                                "name": "Угол поворота",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034526",
-                                                        "qualityDescription": "не менее 360 градусов"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770830",
-                                                "externalSid": "23913746939",
-                                                "name": "Совместимость с ОС Windows, Linux",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034522",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770831",
-                                                "externalSid": "23913746940",
-                                                "name": "Угол обзора объектива",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034523",
-                                                        "qualityDescription": "не менее 75 градусов"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770832",
-                                                "externalSid": "23913746941",
-                                                "name": "Угол наклона",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034524",
-                                                        "qualityDescription": "не менее 40 градусов"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770833",
-                                                "externalSid": "23913746935",
-                                                "name": "Встроенный микрофон",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034525",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770829",
-                                                "externalSid": "23913746938",
-                                                "name": "Тип подключения USB",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034521",
-                                                        "qualityDescription": "наличие"
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091848",
+                                                    "externalSid": "ch-1024753111",
+                                                    "OKEI": {
+                                                        "code": "796",
+                                                        "nationalCode": "ШТ",
+                                                        "name": "Штука"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "2"
+                                                        }
                                                     }
                                                 }
                                             }
-                                        ]
-                                    }
-                                },
-                                "name": "Видеокамеры",
-                                "OKEI": {
-                                    "code": "796",
-                                    "nationalCode": "ШТ",
-                                    "name": "Штука"
-                                },
-                                "customerQuantities": {
-                                    "customerQuantity": {
-                                        "customer": {
-                                            "regNum": "01015000006",
-                                            "consRegistryNum": "802J0959",
-                                            "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ"
                                         },
-                                        "quantity": "3"
-                                    }
-                                },
-                                "price": "1573.33",
-                                "quantity": {
-                                    "value": "3"
-                                },
-                                "sum": "4719.99",
-                                "type": "PRODUCT",
-                                "hierarchyType": "ND"
+                                        {
+                                            "sid": "69817739",
+                                            "externalSid": "1024754103-1310299957",
+                                            "name": "Наличие системы изменяемого опорного контура",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091826",
+                                                    "externalSid": "enum-298583115",
+                                                    "qualityDescription": "Да"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817740",
+                                            "externalSid": "1024754073-1300563839",
+                                            "name": "Экологический класс",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "3",
+                                                "name": "Участник закупки указывает в заявке только одно значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": [
+                                                    {
+                                                        "sid": "84091827",
+                                                        "externalSid": "enum-298583104",
+                                                        "qualityDescription": "5"
+                                                    },
+                                                    {
+                                                        "sid": "84091828",
+                                                        "externalSid": "enum-298583105",
+                                                        "qualityDescription": "3"
+                                                    },
+                                                    {
+                                                        "sid": "84091829",
+                                                        "externalSid": "enum-298583106",
+                                                        "qualityDescription": "4"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817741",
+                                            "externalSid": "1024753108-1300566819",
+                                            "name": "Грузоподъемность люльки",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091830",
+                                                    "externalSid": "ch-1024753108",
+                                                    "OKEI": {
+                                                        "code": "166",
+                                                        "nationalCode": "КГ",
+                                                        "name": "Килограмм"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "300"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817742",
+                                            "externalSid": "1024754070-1300566883",
+                                            "name": "Дополнительное оборудование",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091831",
+                                                    "externalSid": "enum-298583103",
+                                                    "qualityDescription": "Проблесковый маячок желтого (оранжевого) цвета на кабине водителя"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817743",
+                                            "externalSid": "1024754076-1310299956",
+                                            "name": "Ширина люльки",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091832",
+                                                    "externalSid": "ch-1024754076",
+                                                    "OKEI": {
+                                                        "code": "003",
+                                                        "nationalCode": "ММ",
+                                                        "name": "Миллиметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "700",
+                                                            "maxMathNotation": "lessOrEqual",
+                                                            "max": "800"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817744",
+                                            "externalSid": "1024753109-1302548202",
+                                            "name": "Высота",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091833",
+                                                    "externalSid": "ch-1024753109",
+                                                    "OKEI": {
+                                                        "code": "003",
+                                                        "nationalCode": "ММ",
+                                                        "name": "Миллиметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "3700",
+                                                            "maxMathNotation": "lessOrEqual",
+                                                            "max": "4000"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817745",
+                                            "externalSid": "1024754072-1300565597",
+                                            "name": "Вылет стрелы",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091834",
+                                                    "externalSid": "ch-1024754072",
+                                                    "OKEI": {
+                                                        "code": "006",
+                                                        "nationalCode": "М",
+                                                        "name": "Метр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "17"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817746",
+                                            "externalSid": "1024754099-1300566811",
+                                            "name": "Тип шасси подъемника",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091835",
+                                                    "externalSid": "enum-298583114",
+                                                    "qualityDescription": "Автомобильное"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817747",
+                                            "externalSid": "1024754095-1300531737",
+                                            "name": "Тип двигателя",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091836",
+                                                    "externalSid": "enum-298583112",
+                                                    "qualityDescription": "Дизельный"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817748",
+                                            "externalSid": "1024753121-1310299954",
+                                            "name": "Длина люльки",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091837",
+                                                    "externalSid": "ch-1024753121",
+                                                    "OKEI": {
+                                                        "code": "003",
+                                                        "nationalCode": "ММ",
+                                                        "name": "Миллиметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "1400",
+                                                            "maxMathNotation": "lessOrEqual",
+                                                            "max": "1500"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817749",
+                                            "externalSid": "1024754087-1300567485",
+                                            "name": "Размещение электропроводки и рукавов высокого давления",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091838",
+                                                    "externalSid": "enum-298583111",
+                                                    "qualityDescription": "Снаружи стрелы"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817750",
+                                            "externalSid": "1024753114-1320508580",
+                                            "name": "Наличие отопителя",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091839",
+                                                    "externalSid": "enum-298583102",
+                                                    "qualityDescription": "Да"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817751",
+                                            "externalSid": "1024754063-1302548201",
+                                            "name": "Ширина",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091840",
+                                                    "externalSid": "ch-1024754063",
+                                                    "OKEI": {
+                                                        "code": "003",
+                                                        "nationalCode": "ММ",
+                                                        "name": "Миллиметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "2500",
+                                                            "maxMathNotation": "lessOrEqual",
+                                                            "max": "2600"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817752",
+                                            "externalSid": "1024754085-1300566813",
+                                            "name": "Тип автоподъемника",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091841",
+                                                    "externalSid": "enum-298583110",
+                                                    "qualityDescription": "С телескопической стрелой"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817753",
+                                            "externalSid": "1024754075-1300565392",
+                                            "name": "Колесная формула",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091842",
+                                                    "externalSid": "enum-298583108",
+                                                    "qualityDescription": "4х2"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817754",
+                                            "externalSid": "1024753110-1314120191",
+                                            "name": "Объем топливного бака",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091843",
+                                                    "externalSid": "ch-1024753110",
+                                                    "OKEI": {
+                                                        "code": "112",
+                                                        "nationalCode": "л; дм[3*]",
+                                                        "name": "Литр; кубический дециметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "100"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817755",
+                                            "externalSid": "1024753122-1302548203",
+                                            "name": "Длина",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "2",
+                                                "name": "Участник закупки указывает в заявке конкретное значение характеристики"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091844",
+                                                    "externalSid": "ch-1024753122",
+                                                    "OKEI": {
+                                                        "code": "003",
+                                                        "nationalCode": "ММ",
+                                                        "name": "Миллиметр"
+                                                    },
+                                                    "rangeSet": {
+                                                        "valueRange": {
+                                                            "minMathNotation": "greaterOrEqual",
+                                                            "min": "7500",
+                                                            "maxMathNotation": "lessOrEqual",
+                                                            "max": "8000"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817756",
+                                            "externalSid": "1024754074-1300566856",
+                                            "name": "Транспортное положение люльки",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091845",
+                                                    "externalSid": "enum-298583107",
+                                                    "qualityDescription": "Над кабиной"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817757",
+                                            "externalSid": "1024754084-1300565589",
+                                            "name": "Тип кабины",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091846",
+                                                    "externalSid": "enum-298583109",
+                                                    "qualityDescription": "Одинарная"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817758",
+                                            "externalSid": "1024754098-1319531780",
+                                            "name": "Электроизоляция люльки",
+                                            "type": "2",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091847",
+                                                    "externalSid": "enum-298583113",
+                                                    "OKEI": {
+                                                        "code": "222",
+                                                        "nationalCode": "В",
+                                                        "name": "Вольт"
+                                                    },
+                                                    "valueSet": {
+                                                        "concreteValue": "2000.0000"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "sid": "69817738",
+                                            "externalSid": "1024753107-1320511081",
+                                            "name": "Наличие электроизоляции подъемника",
+                                            "type": "1",
+                                            "characteristicsFillingInstruction": {
+                                                "code": "6",
+                                                "name": "Значение характеристики не может изменяться участником закупки"
+                                            },
+                                            "values": {
+                                                "value": {
+                                                    "sid": "84091825",
+                                                    "externalSid": "enum-298583101",
+                                                    "qualityDescription": "Электроизолированный"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
                             },
-                            {
-                                "sid": "136527515",
-                                "externalSid": "23914306001",
-                                "OKPD2": {
-                                    "OKPDCode": "26.20.16.170",
-                                    "OKPDName": "Манипуляторы",
-                                    "characteristics": {
-                                        "characteristicsUsingTextForm": [
-                                            {
-                                                "sid": "69770835",
-                                                "externalSid": "23913746943",
-                                                "name": "Тип устройства беспроводное",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034527",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770836",
-                                                "externalSid": "23913746944",
-                                                "name": "Интерфейс подключения USB (радиоканал)",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034528",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770837",
-                                                "externalSid": "23913746945",
-                                                "name": "Тип клавиатуры мембранная",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034529",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770841",
-                                                "externalSid": "23913746949",
-                                                "name": "Разрешение оптического сенсора мыши",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034533",
-                                                        "qualityDescription": "не менее 1600 dpi"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770839",
-                                                "externalSid": "23913746948",
-                                                "name": "Цифровой блок (Num pad)",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034531",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770840",
-                                                "externalSid": "23913746946",
-                                                "name": "Конструкция клавиатуры классическая",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034532",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770838",
-                                                "externalSid": "23913746947",
-                                                "name": "Количество клавиш клавиатуры",
-                                                "type": "2",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034530",
-                                                        "OKEI": {
-                                                            "code": "796",
-                                                            "nationalCode": "ШТ",
-                                                            "name": "Штука"
-                                                        },
-                                                        "rangeSet": {
-                                                            "valueRange": {
-                                                                "minMathNotation": "greaterOrEqual",
-                                                                "min": "104"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "name": "Манипуляторы",
-                                "OKEI": {
-                                    "code": "796",
-                                    "nationalCode": "ШТ",
-                                    "name": "Штука"
-                                },
-                                "customerQuantities": {
-                                    "customerQuantity": {
-                                        "customer": {
-                                            "regNum": "01015000006",
-                                            "consRegistryNum": "802J0959",
-                                            "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ"
-                                        },
-                                        "quantity": "5"
-                                    }
-                                },
-                                "price": "2979.33",
-                                "quantity": {
-                                    "value": "5"
-                                },
-                                "sum": "14896.65",
-                                "type": "PRODUCT",
-                                "hierarchyType": "ND"
+                            "name": "Автогидроподъемник",
+                            "OKEI": {
+                                "code": "796",
+                                "nationalCode": "ШТ",
+                                "name": "Штука"
                             },
-                            {
-                                "sid": "136527516",
-                                "externalSid": "23914306002",
-                                "OKPD2": {
-                                    "OKPDCode": "26.20.40.110",
-                                    "OKPDName": "Устройства и блоки питания вычислительных машин",
-                                    "characteristics": {
-                                        "characteristicsUsingTextForm": [
-                                            {
-                                                "sid": "69770842",
-                                                "externalSid": "23914334301",
-                                                "name": "Мощность",
-                                                "type": "2",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034534",
-                                                        "OKEI": {
-                                                            "code": "212",
-                                                            "nationalCode": "ВТ",
-                                                            "name": "Ватт"
-                                                        },
-                                                        "rangeSet": {
-                                                            "valueRange": {
-                                                                "minMathNotation": "greaterOrEqual",
-                                                                "min": "400"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770845",
-                                                "externalSid": "23914334302",
-                                                "name": "Тип разъема для материнской платы 20+4 pin",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034537",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770844",
-                                                "externalSid": "23913746950",
-                                                "name": "Форм-фактор ATX",
-                                                "type": "1",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "6",
-                                                    "name": "Значение характеристики не может изменяться участником закупки"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034536",
-                                                        "qualityDescription": "наличие"
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "sid": "69770843",
-                                                "externalSid": "23914334303",
-                                                "name": "Количество разъемов 15-pin SATA",
-                                                "type": "2",
-                                                "characteristicsFillingInstruction": {
-                                                    "code": "2",
-                                                    "name": "Участник закупки указывает в заявке конкретное значение характеристики"
-                                                },
-                                                "values": {
-                                                    "value": {
-                                                        "sid": "84034535",
-                                                        "OKEI": {
-                                                            "code": "796",
-                                                            "nationalCode": "ШТ",
-                                                            "name": "Штука"
-                                                        },
-                                                        "rangeSet": {
-                                                            "valueRange": {
-                                                                "minMathNotation": "greaterOrEqual",
-                                                                "min": "2"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                },
-                                "name": "Устройства и блоки питания вычислительных машин",
-                                "OKEI": {
-                                    "code": "796",
-                                    "nationalCode": "ШТ",
-                                    "name": "Штука"
-                                },
-                                "customerQuantities": {
-                                    "customerQuantity": {
-                                        "customer": {
-                                            "regNum": "01015000006",
-                                            "consRegistryNum": "802J0959",
-                                            "fullName": "АППАРАТ ПО ОБЕСПЕЧЕНИЮ ДЕЯТЕЛЬНОСТИ ОРГАНОВ ГОСУДАРСТВЕННОЙ ВЛАСТИ РЕСПУБЛИКИ БАШКОРТОСТАН В Г. МОСКВЕ"
-                                        },
-                                        "quantity": "5"
-                                    }
-                                },
-                                "price": "1993.67",
-                                "quantity": {
-                                    "value": "5"
-                                },
-                                "sum": "9968.35",
-                                "type": "PRODUCT",
-                                "hierarchyType": "ND"
-                            }
-                        ],
-                        "totalSum": "29584.99",
+                            "price": "8800000",
+                            "quantity": {
+                                "value": "1"
+                            },
+                            "sum": "8800000",
+                            "type": "PRODUCT",
+                            "hierarchyType": "ND"
+                        },
+                        "totalSum": "8800000",
                         "quantityUndefined": "false"
                     }
                 },
                 "preferensesInfo": {
-                    "preferenseInfo": [
-                        {
-                            "preferenseRequirementInfo": {
-                                "shortName": "PVS33044",
-                                "name": "Преимущество в соответствии с ч. 3 ст. 30 Закона № 44-ФЗ"
-                            }
+                    "preferenseInfo": {
+                        "preferenseRequirementInfo": {
+                            "shortName": "PVS33044",
+                            "name": "Преимущество в соответствии с ч. 3 ст. 30 Закона № 44-ФЗ"
                         },
-                        {
-                            "preferenseRequirementInfo": {
-                                "shortName": "RBK126",
-                                "name": "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России от 04.06.2018 № 126н"
-                            },
-                            "prefValue": "15.0"
-                        }
-                    ]
+                        "prefValue": "100.0"
+                    }
                 },
                 "requirementsInfo": {
                     "requirementInfo": [
@@ -991,12 +882,6 @@ const tender_info = {
                                 "shortName": "TR442",
                                 "name": "Требования к участникам закупок в соответствии с ч. 1.1 ст. 31 Закона № 44-ФЗ"
                             }
-                        },
-                        {
-                            "preferenseRequirementInfo": {
-                                "shortName": "TOVNPIVR",
-                                "name": "Требование об отсутствии в реестре недобросовестных поставщиков (подрядчиков, исполнителей) информации, включенной в такой реестр в связи отказом поставщика (подрядчика, исполнителя) от исполнения контракта по причине введения в отношении заказчика санкций и (или) мер ограничительного характера"
-                            }
                         }
                     ]
                 },
@@ -1007,32 +892,18 @@ const tender_info = {
                             "name": "Запрет на допуск товаров, работ, услуг при осуществлении закупок, а также ограничения и условия допуска в соответствии с требованиями, установленными ст. 14 Закона № 44-ФЗ"
                         },
                         "restrictionsSt14": {
-                            "restrictionSt14": [
-                                {
-                                    "requirementsType": {
-                                        "requirementType": {
-                                            "type": "RA"
-                                        }
-                                    },
-                                    "NPAInfo": {
-                                        "code": "15",
-                                        "name": "Постановление Правительства РФ N 878 от 10.07.2019 \"О мерах стимулирования производства радиоэлектронной продукции на территории Российской Федерации при осуществлении закупок товаров, работ, услуг для обеспечения государственных и муниципальных нужд, о внесении изменений в постановление Правительства Российской Федерации от 16 сентября 2016 г. N 925 и признании утратившими силу некоторых актов Правительства Российской Федерации\"",
-                                        "shortName": "Постановление Правительства РФ N 878 от 10.07.2019"
+                            "restrictionSt14": {
+                                "requirementsType": {
+                                    "requirementType": {
+                                        "type": "BAN"
                                     }
                                 },
-                                {
-                                    "requirementsType": {
-                                        "requirementType": {
-                                            "type": "AC"
-                                        }
-                                    },
-                                    "NPAInfo": {
-                                        "code": "1",
-                                        "name": "Участникам, заявки или окончательные предложения которых содержат предложения о поставке товаров в соответствии с приказом Минфина России № 126н от 04.06.2018",
-                                        "shortName": "Приказ Минфина от 04.06.2018 № 126н"
-                                    }
+                                "NPAInfo": {
+                                    "code": "19",
+                                    "name": "Постановление Правительства РФ от 30.04.2020 № 616 \"Об установлении запрета на допуск промышленных товаров, происходящих из иностранных государств, для целей осуществления закупок для государственных и муниципальных нужд, а также промышленных товаров, происходящих из иностранных государств, работ (услуг), выполняемых (оказываемых) иностранными лицами, для целей осуществления закупок для нужд обороны страны и безопасности государства\"",
+                                    "shortName": "Постановление Правительства РФ от 30.04.2020 № 616"
                                 }
-                            ]
+                            }
                         }
                     }
                 },
@@ -1051,6 +922,8 @@ export const TenderCard = () => {
     const { id } = useParams();
     const [isSecondContainerVisible, setSecondContainerVisible] = useState(false);
     const [isThirdContainerVisible, setThirdContainerVisible] = useState(false);
+    const [isProtocolsContainerVisible, setProtocolsContainerVisible] = useState(false);
+
 
     const formatDate = (originalDate) => {
         const parsedDate = parseISO(originalDate);
@@ -1079,6 +952,10 @@ export const TenderCard = () => {
     const handleClickThird = () => {
         // Изменяем состояние для показа/скрытия второго контейнера
         setThirdContainerVisible(!isThirdContainerVisible);
+    };
+    const handleClickProtocols = () => {
+        // Изменяем состояние для показа/скрытия второго контейнера
+        setProtocolsContainerVisible(!isProtocolsContainerVisible);
     };
 
     return (
@@ -1141,37 +1018,33 @@ export const TenderCard = () => {
                     {/*        <TextBlack14pxRegular>17.01.2020 в 09:00 (МСК +00:00)</TextBlack14pxRegular>*/}
                     {/*    </FlexTextColumn>*/}
                     {/*</BorderedComtainer>*/}
-                    {/*<BorderedComtainer>*/}
-                    {/*    <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Организация</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>АДМИНИСТРАЦИЯ ГОРОДА СУРГУТА</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Фактический адрес</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>Российская Федерация, 65668, Ханты - Мансийский Автономный округ - Югра АО, Сургут г, УЛ</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Почтовый адрес</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>Российская Федерация, 567876, Ханты - Мансийский Автономный округ - Югра АО, Сургут г, УЛ ЭНГЕЛЬСА, 8</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Контакты</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>Штриккер Р. В.</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Телефон</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>+ 7 (646) 646-65-78</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Факс</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>34567</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Электронная почта</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>cscdsvd@gmail.com</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*</BorderedComtainer>*/}
+                    <BorderedComtainer>
+                        <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Организация</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleOrgInfo?.fullName}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Фактический адрес</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleOrgInfo?.factAddress}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Почтовый адрес</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleOrgInfo?.postAddress}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Контакты</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactPersonInfo?.firstName} {tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactPersonInfo?.middleName} {tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactPersonInfo?.lastName}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Телефон</TextGray14pxRegular>
+                            <TextBlack14pxRegular>+ {tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactPhone}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular>Электронная почта</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactEMail}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                    </BorderedComtainer>
                 </LeftSideSection35>
                 <RightSideSection65>
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
@@ -1297,7 +1170,13 @@ export const TenderCard = () => {
                     <BorderOpeningContainer>
                         <FlexTextRow style={{alignItems: 'center'}}>
                             <TextBlack14pxBold style={{marginRight: '20px'}}>Документы закупки</TextBlack14pxBold>
-                            <Arrow onClick={handleClickThird}/>
+                            <div
+                                id="arrow"
+                                onClick={handleClickThird}
+                                style={{ transform: isThirdContainerVisible ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                            >
+                                <Arrow />
+                            </div>
                         </FlexTextRow>
                         {isThirdContainerVisible && (
                             <BorderFitContaienr >
@@ -1313,40 +1192,129 @@ export const TenderCard = () => {
                     </BorderOpeningContainer>
                     <BorderOpeningContainer>
                         <FlexTextRow style={{alignItems: 'center'}}>
-                            <TextBlack14pxBold style={{marginRight: '20px'}}>Разъяснения</TextBlack14pxBold>
-                            <Arrow onClick={handleClick}/>
+                            <TextBlack14pxBold style={{marginRight: '20px'}}>Протоколы</TextBlack14pxBold>
+                            <div
+                                id="arrow"
+                                onClick={handleClickProtocols}
+                                style={{ transform: isProtocolsContainerVisible ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                            >
+                                <Arrow />
+                            </div>
                         </FlexTextRow>
-                        {isSecondContainerVisible && (
+                        {isProtocolsContainerVisible && (
                             <BorderFitContaienr >
                                 <FlexTextColumn>
-                                    {tender.clarification[0]?.commonInfo?.href ?
-                                    (<a href={`${tender.clarification[0]?.commonInfo?.href}`}>
-                                        <TextBlue14pxRegular>Запрос - ответ от {formatDate(tender.clarification[0]?.commonInfo?.docPublishDTInEIS)}</TextBlue14pxRegular>
-                                    </a>) : null
+                                    {
+                                        tender.protocol?.map((item,index) => (
+                                            <a href={`${item.id}`}>
+                                                <TextBlue14pxRegular>Протокол {item.id} от {item.commonInfo?.signDT}</TextBlue14pxRegular>
+                                            </a>
+                                        ))
                                     }
                                 </FlexTextColumn>
                             </BorderFitContaienr>
                         )}
                     </BorderOpeningContainer>
-                    {/*<BorderedComtainer>*/}
-                    {/*    <TextBlack14pxBold>Информация о сроках исполнения контракта и источниках финансирования</TextBlack14pxBold>*/}
-                    {/*    /!*<FlexTextColumn>*!/*/}
-                    {/*    /!*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*!/*/}
-                    {/*    /!*    <TextBlack14pxRegular></TextBlack14pxRegular>*!/*/}
-                    {/*    /!*</FlexTextColumn>*!/*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular style={{width: '35%'}}>Дата начала исполнения контрактаы</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.contractConditionsInfo?.maxPriceInfo?.maxPrice}</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular style={{width: '35%'}}>Валюта</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.contractConditionsInfo?.maxPriceInfo?.currency?.name}</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular style={{width: '35%'}}>Идентификационный номер закупки</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.IKZInfo?.purchaseCode}</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*</BorderedComtainer>*/}
+                    <BorderOpeningContainer>
+                        <FlexTextRow style={{alignItems: 'center'}}>
+                            <TextBlack14pxBold style={{marginRight: '20px'}}>Разъяснения</TextBlack14pxBold>
+                            <div
+                                id="arrow"
+                                onClick={handleClick}
+                                style={{ transform: isSecondContainerVisible ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                            >
+                                <Arrow />
+                            </div>
+                        </FlexTextRow>
+                        {isSecondContainerVisible && (
+                            <BorderFitContaienr >
+                                <FlexTextColumn>
+                                    {tender.clarification[0]?.commonInfo?.href ?
+                                        (<a href={`${tender.clarification[0]?.commonInfo?.href}`}>
+                                            <TextBlue14pxRegular>Запрос - ответ от {formatDate(tender.clarification[0]?.commonInfo?.docPublishDTInEIS)}</TextBlue14pxRegular>
+                                        </a>) : null
+                                    }
+                                </FlexTextColumn>
+                            </BorderFitContaienr>
+                        )}
+                    </BorderOpeningContainer>
+                    <BorderedComtainer>
+                        <TextBlack14pxBold>Информация о сроках исполнения контракта и источниках финансирования</TextBlack14pxBold>
+                        {/*<FlexTextColumn>*/}
+                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
+                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
+                        {/*</FlexTextColumn>*/}
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Дата начала исполнения контрактаы</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.startDate}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Срок исполнения контракта</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.endDate}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Количество этапов</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{
+                              tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.stagesInfo.length
+                            }</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Наименование бюджета</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.budgetInfo?.name
+                            }</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Код территории муниципального образования</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.code}: {tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.name}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                    </BorderedComtainer>
+                    <BorderedComtainer>
+                        <TextBlack14pxBold>Требования к гарантии качества товара, работы, услуги</TextBlack14pxBold>
+                        {/*<FlexTextColumn>*/}
+                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
+                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
+                        {/*</FlexTextColumn>*/}
+                        {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo ? (
+                            <FlexTextColumn>
+                                <TextGray14pxRegular style={{width: '35%'}}>Срок, на который предоставляется гарантия и (или) требования к объёму предоставления гарантий качества товара.</TextGray14pxRegular>
+                                <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo?.warrantyTerm}</TextBlack14pxRegular>
+                            </FlexTextColumn>
+                        ) : null}
+                    </BorderedComtainer>
+                    <BorderedComtainer>
+                        <TextBlack14pxBold>Обеспечение гарантийных обязательств</TextBlack14pxBold>
+                        {/*<FlexTextColumn>*/}
+                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
+                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
+                        {/*</FlexTextColumn>*/}
+                        {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.provisionWarranty ? (
+                            <FlexTextColumn>
+                                <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение гарантийных обязательств</TextGray14pxRegular>
+                                <TextBlack14pxRegular>Да</TextBlack14pxRegular>
+                            </FlexTextColumn>
+                        ) : null}
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Размер обеспечение гарантийных обязательств</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.provisionWarranty?.amount} Российский рубль</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Порядок предоставления обеспечения гарантийных обязательств, требования к обеспечению</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.provisionWarranty?.procedureInfo
+                            }</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Наименование бюджета</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.budgetInfo?.name
+                            }</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Код территории муниципального образования</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.code}: {tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.name}</TextBlack14pxRegular>
+                        </FlexTextColumn>
+                    </BorderedComtainer>
                 </RightSideSection65>
             </PageContainer>
         </Fragment>
