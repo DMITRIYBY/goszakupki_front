@@ -1116,26 +1116,27 @@ export const TenderCard = () => {
                                             </TableCell>
                                             <TableCell>
                                                 <FlexTextColumn>
-                                                    {item.name ? (
-                                                        <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>
-                                                    ) : null}
-                                                    {/*<TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>*/}
-                                                    {/*<TextBlack14pxRegular>{item && item.name !== undefined && item.name !== null ? (*/}
-                                                    {/*    item.name*/}
-                                                    {/*) : ''}</TextBlack14pxRegular>*/}
-
-                                                    {/*{item && item.name !== undefined && item.name !== null ? (*/}
-                                                    {/*    <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>*/}
-                                                    {/*) : null}*/}
-                                                        {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                            <TextGray14pxRegular>{item?.name ? (item.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                        ))) :
-                                                            Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                                <TextGray14pxRegular>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                            ))
-                                                        }
+                                                    <FlexTextRow>
+                                                        {item.name ? (
+                                                            <TextBlack14pxRegular key={index}>{item?.name}</TextBlack14pxRegular>
+                                                        ) : null}
+                                                    </FlexTextRow>
+                                                    {
+                                                        item?.KTRU != null && item?.KTRU != undefined ? (
+                                                            <FlexTextColumn>
+                                                                {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                                        <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                                    ))) :
+                                                                    Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                                        <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                                    ))
+                                                                }
+                                                            </FlexTextColumn>
+                                                        ) : ''
+                                                    }
                                                 </FlexTextColumn>
                                             </TableCell>
+                                            <TableCell>{item?.OKEI?.name}</TableCell>
                                             <TableCell>{item?.OKEI?.name}</TableCell>
                                             <TableCell>{item?.quantity?.value}</TableCell>
                                             <TableCell>{item?.price}</TableCell>
