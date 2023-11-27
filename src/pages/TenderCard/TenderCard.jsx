@@ -1078,6 +1078,7 @@ export const TenderCard = () => {
                                     Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject).map((item, index) => (
                                         <TableRow key={index}>
                                             <TableCell>{item?.name}</TableCell>
+
                                             <TableCell>
                                                 {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
                                             </TableCell>
@@ -1107,21 +1108,32 @@ export const TenderCard = () => {
                                     <TableCell><TextBlack14pxBold>СТОИМОСТЬ, ₽</TextBlack14pxBold></TableCell>
                                 </TableRow>
                                 {
-                                    Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject).map((item, index) => (
+                                    Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject)
+                                        .map((item, index) => (
                                         <TableRow key={index}>
                                             <TableCell>
                                                 {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
                                             </TableCell>
                                             <TableCell>
                                                 <FlexTextColumn>
-                                                    <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>
-                                                    {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                        <TextGray14pxRegular>{item?.name} {item?.values?.value?.rangeSet?.min} {item?.values?.value?.OKEI?.nationalCode}</TextGray14pxRegular>
-                                                    ))) :
-                                                        Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                            <TextGray14pxRegular>{item?.name} {item?.values?.value?.rangeSet?.min} {item?.values?.value?.OKEI?.nationalCode}</TextGray14pxRegular>
-                                                        ))
-                                                    }
+                                                    {item.name ? (
+                                                        <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>
+                                                    ) : null}
+                                                    {/*<TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>*/}
+                                                    {/*<TextBlack14pxRegular>{item && item.name !== undefined && item.name !== null ? (*/}
+                                                    {/*    item.name*/}
+                                                    {/*) : ''}</TextBlack14pxRegular>*/}
+
+                                                    {/*{item && item.name !== undefined && item.name !== null ? (*/}
+                                                    {/*    <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>*/}
+                                                    {/*) : null}*/}
+                                                        {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                            <TextGray14pxRegular>{item?.name ? (item.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                        ))) :
+                                                            Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                                <TextGray14pxRegular>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                            ))
+                                                        }
                                                 </FlexTextColumn>
                                             </TableCell>
                                             <TableCell>{item?.OKEI?.name}</TableCell>
