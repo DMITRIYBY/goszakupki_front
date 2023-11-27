@@ -45,6 +45,8 @@ export const TextBlue14pxRegular = styled.p`
   font-size: 14px;
   font-weight: 400;
   width: fit-content;
+  text-decoration: none;
+  outline: none;
 `;
 export const TextBlue16pxSemiBold = styled.p`
   font-family: 'Open-Sans', sans-serif;
