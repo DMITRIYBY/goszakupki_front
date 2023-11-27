@@ -38,5 +38,20 @@ export const BorderFitContaienr = styled(BorderedComtainer)`
   padding: 0px;
 `;
 export const Atext14pxBlue = styled(TextBlue14pxRegular)`
+`;
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
 
+export const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+`;
+
+export const TableCell = styled.td`
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 `;

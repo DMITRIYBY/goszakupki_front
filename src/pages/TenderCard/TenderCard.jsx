@@ -2,7 +2,7 @@ import {FC, Fragment, useState, useEffect} from 'react'
 import {
     Atext14pxBlue,
     BorderedComtainer, BorderFitContaienr,
-    BorderOpeningContainer,
+    BorderOpeningContainer, Table, TableRow, TableCell,
     LeftSideSection35,
     PageContainer,
     RightSideSection65
@@ -10,7 +10,7 @@ import {
 import {
     TextBlack14pxBold,
     TextBlack14pxRegular,
-    TextBlack22pxBold,
+    TextBlack22pxBold, TextBlack22pxRegular,
     TextBlue14pxRegular,
     TextGray14pxRegular
 } from "../../constants/fonts";
@@ -21,6 +21,7 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import {format, parseISO} from "date-fns";
 import JsonRenderer from "../JsonRenderer";
+import {testTender1} from "./testTender1";
 
 const tender_info = {
     "appAbsence": [],
@@ -919,7 +920,7 @@ const tender_info = {
 
 export const TenderCard = () => {
 
-    const [tender, setTender] = useState(tender_info)
+    const [tender, setTender] = useState(testTender1)
     const { id } = useParams();
     const [isSecondContainerVisible, setSecondContainerVisible] = useState(false);
     const [isThirdContainerVisible, setThirdContainerVisible] = useState(false);
@@ -1060,6 +1061,81 @@ export const TenderCard = () => {
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Обеспечение контракта</TextGray14pxRegular>
                             <TextBlack22pxBold>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ₽</TextBlack22pxBold>
+                        </FlexTextColumn>
+                    </BorderedComtainer>
+                    <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
+                        <FlexTextColumn>
+                            <Table>
+                                <tbody>
+                                <TableRow>
+                                    <TableCell><TextBlack14pxBold>Информация об объекте закупки</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>ОКПД2</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>Количество</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>Цена</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>Стоимость</TextBlack14pxBold></TableCell>
+                                </TableRow>
+                                {
+                                    Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject).map((item, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell>{item?.name}</TableCell>
+                                            <TableCell>
+                                                {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
+                                            </TableCell>
+                                            <TableCell>{item?.quantity?.value} {item?.OKEI?.nationalCode}</TableCell>
+                                            <TableCell>{item?.price}</TableCell>
+                                            <TableCell>{item?.sum}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
+                                </tbody>
+                            </Table>
+                            <FlexTextRow style={{justifyContent: 'flex-end'}}>
+                                <TextBlack22pxBold>Итого: {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack22pxBold>
+                            </FlexTextRow>
+                        </FlexTextColumn>
+                    </BorderedComtainer>
+                    <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
+                        <FlexTextColumn>
+                            <Table>
+                                <tbody>
+                                <TableRow>
+                                    <TableCell><TextBlack14pxBold>КОД ПОЗИЦИИ</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>НАИМЕНОВАНИЕ ТОВАРА, РАБОТЫ, УСЛУГИ</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>ЕД. ИЗМЕРЕНИЯ</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>КОЛИЧЕСТВО (ОБЪЕМ РАБОТЫ, УСЛУГИ)</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>ЦЕНА ЗА ЕД., ₽</TextBlack14pxBold></TableCell>
+                                    <TableCell><TextBlack14pxBold>СТОИМОСТЬ, ₽</TextBlack14pxBold></TableCell>
+                                </TableRow>
+                                {
+                                    Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject).map((item, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell>
+                                                {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
+                                            </TableCell>
+                                            <TableCell>
+                                                <FlexTextColumn>
+                                                    <TextBlack14pxRegular>{item?.name}</TextBlack14pxRegular>
+                                                    {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                        <TextGray14pxRegular>{item?.name} {item?.values?.value?.rangeSet?.min} {item?.values?.value?.OKEI?.nationalCode}</TextGray14pxRegular>
+                                                    ))) :
+                                                        Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                            <TextGray14pxRegular>{item?.name} {item?.values?.value?.rangeSet?.min} {item?.values?.value?.OKEI?.nationalCode}</TextGray14pxRegular>
+                                                        ))
+                                                    }
+                                                </FlexTextColumn>
+                                            </TableCell>
+                                            <TableCell>{item?.OKEI?.name}</TableCell>
+                                            <TableCell>{item?.quantity?.value}</TableCell>
+                                            <TableCell>{item?.price}</TableCell>
+                                            <TableCell>{item?.sum}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
+                                </tbody>
+                            </Table>
+                            <FlexTextRow style={{justifyContent: 'flex-end'}}>
+                                <TextBlack22pxBold>Итого: {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack22pxBold>
+                            </FlexTextRow>
                         </FlexTextColumn>
                     </BorderedComtainer>
                     <BorderedComtainer>
@@ -1282,6 +1358,55 @@ export const TenderCard = () => {
                                 <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo?.warrantyTerm}</TextBlack14pxRegular>
                             </FlexTextColumn>
                         ) : null}
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>Финансовое обеспечение закупки</TextGray14pxRegular>
+                            <Table>
+                                <tbody>
+                                <TableRow>
+                                    <TableCell><TextGray14pxRegular>НА 2023 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА 2024 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА 2025 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА ПОСЛЕДУЩИЕ ГОДЫ, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>ВСЕГО, ₽</TextGray14pxRegular></TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.financeInfo.currentYear}</TableCell>
+                                    <TableCell>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.financeInfo.firstYear}</TableCell>
+                                    <TableCell>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.financeInfo.secondYear}</TableCell>
+                                    <TableCell>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.financeInfo.subsecYears}</TableCell>
+                                    <TableCell>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.financeInfo.total}</TableCell>
+                                </TableRow>
+                                </tbody>
+                            </Table>
+                        </FlexTextColumn>
+                        <FlexTextColumn>
+                            <TextGray14pxRegular style={{width: '35%'}}>За счет бюджетных средств</TextGray14pxRegular>
+                            <Table>
+                                <tbody>
+                                <TableRow>
+                                    <TableCell><TextGray14pxRegular>КБК</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА 2023 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА 2024 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА 2025 ГОД, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>НА ПОСЛЕДУЩИЕ ГОДЫ, ₽</TextGray14pxRegular></TableCell>
+                                    <TableCell><TextGray14pxRegular>ВСЕГО, ₽</TextGray14pxRegular></TableCell>
+                                </TableRow>
+                                {
+                                    Object.values(tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.stagesInfo).map((item, index) => (
+                                        <TableRow>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.KBK}</TableCell>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.paymentYearInfo?.currentYear}</TableCell>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.paymentYearInfo?.firstYear}</TableCell>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.paymentYearInfo?.secondYear}</TableCell>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.paymentYearInfo?.subsecYears}</TableCell>
+                                            <TableCell>{item?.budgetFinancingsInfo?.budgetFinancingInfo?.paymentYearInfo?.total}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
+
+                                </tbody>
+                            </Table>
+                        </FlexTextColumn>
                     </BorderedComtainer>
                     <BorderedComtainer>
                         <TextBlack14pxBold>Обеспечение гарантийных обязательств</TextBlack14pxBold>
