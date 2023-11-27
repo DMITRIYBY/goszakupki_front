@@ -20,6 +20,7 @@ import {Menu} from "../../components/Menu/Menu";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import {format, parseISO} from "date-fns";
+import JsonRenderer from "../JsonRenderer";
 
 const tender_info = {
     "appAbsence": [],
@@ -1315,6 +1316,7 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.code}: {tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
             </PageContainer>
         </Fragment>

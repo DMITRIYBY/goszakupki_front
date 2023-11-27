@@ -2,17 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const JsonRenderer = () => {
+const JsonRenderer = ({ tenderID }) => {
     const [data, setData] = useState({});
     const [openBlocks, setOpenBlocks] = useState({});
-
-    const { id } = useParams();
+    const [id, setId] = useState(tenderID);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://51.250.27.179:4100/client/tender?id=${id}`);
                 setData(response.data);
+
+                // Инициализируем состояние openBlocks при получении новых данных
+                const keys = Object.keys(response.data);
+                const initialOpenBlocks = {};
+                keys.forEach((key) => {
+                    initialOpenBlocks[key] = true;
+                });
+                setOpenBlocks(initialOpenBlocks);
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
             }
@@ -34,7 +41,7 @@ const JsonRenderer = () => {
         return keys.map((key) => {
             const value = obj[key];
             const isObject = typeof value === 'object';
-            const isOpen = openBlocks[key] || (isObject && depth < 2); // Скрыть только блоки с 3-го уровня вложенности и выше
+            const isOpen = openBlocks[key] !== undefined ? openBlocks[key] : true; // всегда открыто по умолчанию
 
             const itemStyle = {
                 paddingLeft: `${depth * 10}px`,
@@ -45,7 +52,7 @@ const JsonRenderer = () => {
                     <div>
                         {isObject && depth >= 2 && (
                             <button
-                                style={{border: 'none', background: 'none'}}
+                                style={{ border: 'none', background: 'none' }}
                                 className="arrow-button"
                                 onClick={() => toggleBlock(key)}
                             >
