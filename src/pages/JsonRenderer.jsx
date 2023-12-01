@@ -10,7 +10,7 @@ const JsonRenderer = ({ tenderID }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://51.250.27.179:4100/client/tender?id=${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`);
                 setData(response.data);
 
                 // Инициализируем состояние openBlocks при получении новых данных

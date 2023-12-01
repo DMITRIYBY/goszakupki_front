@@ -442,7 +442,7 @@ export const Catalog: FC = () => {
         // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://51.250.27.179:4100/client/tenders?page=${currentPage}&perPage=20`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}&perPage=20`);
                 setTenders(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -451,7 +451,7 @@ export const Catalog: FC = () => {
 
         const fetchTendersCount = async () => {
             try {
-                const response = await axios.get(`http://51.250.27.179:4100/client/tendersCount`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tendersCount`);
                 setTendersCount(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -466,7 +466,7 @@ export const Catalog: FC = () => {
 
     const fetchTenderByID = async () => {
         try {
-            const response = await axios.get(`http://51.250.27.179:4100/client/tender/${findedTenderId}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender/${findedTenderId}`);
             setTenders(response.data); // Обновите состояние данными из ответа
             console.log(JSON.stringify(tenders))
         } catch (error) {
