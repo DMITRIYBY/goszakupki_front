@@ -227,9 +227,9 @@ export const TenderCard = () => {
                                                         ) : null}
                                                     </FlexTextRow>
                                                     {
-                                                        item?.KTRU != null && item?.KTRU != undefined ? (
+                                                        item?.KTRU != null && item?.KTRU != undefined && item.KTRU.characteristics.characteristicsUsingTextForm ? (
                                                             <FlexTextColumn>
-                                                                {item.KTRU ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                                {item.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
                                                                         <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
                                                                     ))) :
                                                                     Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
@@ -313,7 +313,7 @@ export const TenderCard = () => {
                         {/*</FlexTextColumn>*/}
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Размер обеспечения исполнения контракта</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} P</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ({tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.part}) %</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Порядок предоставления обеспечения исполнения контракта, требования к обеспечению</TextGray14pxRegular>
