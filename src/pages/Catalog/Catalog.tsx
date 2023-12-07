@@ -79,7 +79,7 @@ export const Catalog: FC = () => {
                     // Проверка на null перед отображением TenderPreiewC
                     item !== undefined || null ? (
 
-                        <TenderPreiewCard key={index} jsonData={item} />
+                        <TenderPreiewCard key={index}  jsonData={item}/>
                     ) : null
                 ))}
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
