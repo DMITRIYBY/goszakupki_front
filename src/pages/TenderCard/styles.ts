@@ -45,13 +45,14 @@ export const Table = styled.table`
 `;
 
 export const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  //&:nth-child(even) {
+  //  background-color: #f2f2f2;
+  //}
 `;
 
 export const TableCell = styled.td`
-  border: 1px solid #dddddd;
-  text-align: left;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  text-align: left; //need to right
   padding: 8px;
 `;

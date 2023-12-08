@@ -125,6 +125,7 @@ export const TenderCard = () => {
                     {/*        <TextBlack14pxRegular>17.01.2020 в 09:00 (МСК +00:00)</TextBlack14pxRegular>*/}
                     {/*    </FlexTextColumn>*/}
                     {/*</BorderedComtainer>*/}
+                    {tender.tender[0].purchaseResponsibleInfo?.responsibleOrgInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>
                         <FlexTextColumn>
@@ -152,6 +153,7 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender.tender[0].purchaseResponsibleInfo?.responsibleInfo?.contactEMail}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    ) : null }
                 </LeftSideSection35>
                 <RightSideSection65>
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
@@ -168,6 +170,7 @@ export const TenderCard = () => {
                             <TextBlack22pxBold>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ₽</TextBlack22pxBold>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject ? (
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                         <FlexTextColumn>
                             <Table>
@@ -196,10 +199,11 @@ export const TenderCard = () => {
                                 </tbody>
                             </Table>
                             <FlexTextRow style={{justifyContent: 'flex-end'}}>
-                                <TextBlack22pxBold>Итого: {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack22pxBold>
+                                <TextBlack14pxBold>Итого: {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack14pxBold>
                             </FlexTextRow>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    ) : null }
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                         <FlexTextColumn>
                             <Table>
@@ -305,6 +309,7 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender.tender[0].notificationInfo?.restrictionsInfo?.restrictionInfo?.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
                         </FlexTextRow>
                     </BorderedComtainer>
+                    {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Обеспечение исполнения контракта</TextBlack14pxBold>
                         {/*<FlexTextColumn>*/}
@@ -324,6 +329,8 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>р/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.settlementAccount} л/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount}, БИК {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    ) : null }
+                    {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Обеспечение заявки</TextBlack14pxBold>
                         {/*<FlexTextColumn>*/}
@@ -343,6 +350,7 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>р/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.account?.settlementAccount} л/с {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount}, БИК {tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    ) : null }
                     <BorderedComtainer>
                         <TextBlack14pxBold>Начальная(максимальная) цена контракта</TextBlack14pxBold>
                         {/*<FlexTextColumn>*/}
@@ -410,6 +418,7 @@ export const TenderCard = () => {
                             </BorderFitContaienr>
                         )}
                     </BorderOpeningContainer>
+                    {tender.clarification[0]?.commonInfo ? (
                     <BorderOpeningContainer>
                         <FlexTextRow style={{alignItems: 'center'}}>
                             <TextBlack14pxBold style={{marginRight: '20px'}}>Разъяснения</TextBlack14pxBold>
@@ -433,6 +442,7 @@ export const TenderCard = () => {
                             </BorderFitContaienr>
                         )}
                     </BorderOpeningContainer>
+                    ) : null }
                     <BorderedComtainer>
                         <TextBlack14pxBold>Информация о сроках исполнения контракта и источниках финансирования</TextBlack14pxBold>
                         {/*<FlexTextColumn>*/}
