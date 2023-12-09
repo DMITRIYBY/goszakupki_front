@@ -65,8 +65,8 @@ export const TenderPreiewCard223: FC<ITender> = ({jsonData}) => {
                         <FlexRow>
                             <TextGray14pxRegular>Заказчик</TextGray14pxRegular>
                             <TextBlack14pxRegular>
-                                {jsonData?.customer.fullName
-                                    ? jsonData.customer.fullName
+                                {jsonData?.customer.mainInfo?.fullName
+                                    ? jsonData.customer.mainInfo.fullName
                                     : 'Нет данных'
                                 }
                             </TextBlack14pxRegular>
