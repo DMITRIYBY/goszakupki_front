@@ -15,7 +15,7 @@ interface ITender {
     jsonData: any,
 }
 
-export const TenderPreiewCard: FC<ITender> = ({jsonData}) => {
+export const TenderPreiewCard44: FC<ITender> = ({jsonData}) => {
 
     const formatDate = (originalDate: string) => {
         const parsedDate = parseISO(originalDate);
