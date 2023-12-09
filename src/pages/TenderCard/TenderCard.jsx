@@ -22,6 +22,7 @@ import {useParams} from "react-router-dom";
 import {format, parseISO} from "date-fns";
 import JsonRenderer from "../JsonRenderer";
 import {testTender1} from "./testTender1";
+import {CriterialInfo} from "../TenderComponents/CriterialInfo/CriterialInfo";
 
 export const TenderCard = () => {
 
@@ -569,6 +570,11 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.code}: {tender.tender[0].notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
+                    {
+                        tender.tender[0].notificationInfo.criteriaInfo?.criterionInfo ? (
+                           <CriterialInfo criterias={tender.tender[0].notificationInfo.criteriaInfo.criterionInfo}/>
+                        ) : null
+                    }
                     <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
             </PageContainer>

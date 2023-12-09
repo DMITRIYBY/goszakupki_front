@@ -1,5 +1,5 @@
 import {FC, Fragment, useEffect, useState} from "react";
-import {TenderPreiewCard} from "../../components/TenderPreviewCard/TenderPreiewCard";
+import { TenderPreiewCard44, TenderPreiewCard223 } from "../../components/TenderPreviewCard";
 import {PageContainer} from "../TenderCard/styles";
 import tendersDB from './many_tenders.json'
 import {CatalogPage, DocumentsCount, FindByIDButton, FinderByID, ShowCount} from "./styles";
@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import {TextBlack14pxRegular, TextBlack22pxRegular, TextGray14pxRegular} from "../../constants/fonts";
 import {FlexRow, FlexTextRow} from "../../containers/containers";
 
+
+interface Tender{
+    fz? : string
+}
 
 export const Catalog: FC = () => {
     const [tenders, setTenders] = useState([]);
@@ -75,12 +79,13 @@ export const Catalog: FC = () => {
                     <FindByIDButton onClick={handleClickFinder}>Найти</FindByIDButton>
                 </FlexRow>
                 {tenders
-                    .map((item, index) => (
+                    .map((item: Tender, index) => (
                     // Проверка на null перед отображением TenderPreiewC
-                    item !== undefined || null ? (
+                    item !== undefined || null ?
+                        item?.fz === 'fz223' ? (<TenderPreiewCard223 key={index}  jsonData={item}/>):
+                            (<TenderPreiewCard44 key={index}  jsonData={item}/>)
+                        : null
 
-                        <TenderPreiewCard key={index}  jsonData={item}/>
-                    ) : null
                 ))}
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                     <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
