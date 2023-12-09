@@ -19,6 +19,7 @@ export const Catalog: FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [countItems, setCountItems] = useState(10);
     const [findedTenderId, setFindedTenderId] = useState('')
+    const [fz, setFz] = useState('')
 
 
 
@@ -26,7 +27,8 @@ export const Catalog: FC = () => {
         // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}&perPage=20`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}
+                &perPage=20&${fz !== '' ? 'fz='+fz : ''}`);
                 setTenders(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -35,7 +37,7 @@ export const Catalog: FC = () => {
 
         const fetchTendersCount = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tendersCount`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tendersCount?${fz !== '' ? 'fz='+fz : ''}`);
                 setTendersCount(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -46,7 +48,7 @@ export const Catalog: FC = () => {
         fetchData();
         fetchTendersCount();
 
-    }, [currentPage]); // Зависимость от currentPage для повторного выполнения при изменении страницы
+    }, [currentPage, fz]); // Зависимость от currentPage для повторного выполнения при изменении страницы
 
     const fetchTenderByID = async () => {
         try {
@@ -66,6 +68,10 @@ export const Catalog: FC = () => {
         fetchTenderByID()
     }
 
+    const handleCheckboxChange = () => {
+        setFz(fz === '' ? 'fz223' : '');
+    };
+
     // @ts-ignore
     return (
         <Fragment>
@@ -77,6 +83,15 @@ export const Catalog: FC = () => {
                 <FlexRow style={{width: '100%', justifyContent: 'flex-start'}}>
                     <FinderByID onChange={(event) => setFindedTenderId(event.target.value)} />
                     <FindByIDButton onClick={handleClickFinder}>Найти</FindByIDButton>
+                </FlexRow>
+                <FlexRow style={{width: '100%', justifyContent: 'flex-start'}}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            onChange={handleCheckboxChange}
+                        />
+                        ФЗ 223
+                    </label>
                 </FlexRow>
                 {tenders
                     .map((item: Tender, index) => (
