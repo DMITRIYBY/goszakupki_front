@@ -27,8 +27,7 @@ export const Catalog: FC = () => {
         // Определите функцию для выполнения запроса
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}
-                &perPage=20&${fz !== '' ? 'fz='+fz : ''}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}&perPage=20${fz !== '' ? '&fz='+fz : ''}`);
                 setTenders(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -37,7 +36,7 @@ export const Catalog: FC = () => {
 
         const fetchTendersCount = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tendersCount?${fz !== '' ? 'fz='+fz : ''}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tendersCount${fz !== '' ? '?fz='+fz : ''}`);
                 setTendersCount(response.data); // Обновите состояние данными из ответа
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
