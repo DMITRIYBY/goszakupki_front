@@ -80,7 +80,7 @@ export const TenderPreiewCard223: FC<ITender> = ({jsonData}) => {
                     <FlexTextRow style={{width: '100%'}}>
                         <TextBlack22pxRegular>
                             {jsonData?.lots
-                                ? `${[jsonData.lots].flat().reduce((acc, curr) => acc + curr.lot.lotdata.initialSum, 0)} ₽`
+                                ? `${[jsonData.lots].flat().reduce((acc, curr) => acc + curr.lot.lotData.initialSum, 0)} ₽`
                                 : 'Нет данных'
                             }
                         </TextBlack22pxRegular>
