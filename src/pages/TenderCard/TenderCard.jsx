@@ -232,14 +232,23 @@ export const TenderCard = () => {
                                                         ) : null}
                                                     </FlexTextRow>
                                                     {
-                                                        item?.KTRU != null && item?.KTRU != undefined && item.KTRU.characteristics.characteristicsUsingTextForm ? (
+                                                        item?.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ? (
                                                             <FlexTextColumn>
-                                                                {item.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ? (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                                        <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                    ))) :
+                                                                {item.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ?
+                                                                    !item.KTRU.characteristics.characteristicsUsingTextForm.length ?
+                                                                        (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
+                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                                        ))) :
+                                                                        [item.KTRU?.characteristics?.characteristicsUsingTextForm].map((item,index) => (
+                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                                        )) :
+                                                                    !item.OKPD2?.characteristics?.characteristicsUsingTextForm.length ?
                                                                     Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
                                                                         <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                    ))
+                                                                    )) :
+                                                                       [item.OKPD2?.characteristics?.characteristicsUsingTextForm].map((item,index) => (
+                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
+                                                                        ))
                                                                 }
                                                             </FlexTextColumn>
                                                         ) : ''
