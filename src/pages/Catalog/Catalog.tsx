@@ -68,7 +68,7 @@ export const Catalog: FC = () => {
     }
 
     const handleCheckboxChange = () => {
-        setFz(fz === '' ? 'fz223' : '');
+        setFz(fz === '' ? '223' : '');
     };
 
     // @ts-ignore
