@@ -23,6 +23,7 @@ import {format, parseISO} from "date-fns";
 import JsonRenderer from "../JsonRenderer";
 import {testTender1} from "./testTender1";
 import {CriterialInfo} from "../TenderComponents/CriterialInfo/CriterialInfo";
+import {ZakupkiInfo} from "../../components/ZakupkiInfo/ZakupkiInfo";
 
 export const TenderCard = () => {
 
@@ -171,7 +172,9 @@ export const TenderCard = () => {
                             <TextBlack22pxBold>{tender.tender[0].notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ₽</TextBlack22pxBold>
                         </FlexTextColumn>
                     </BorderedComtainer>
-                    {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject ? (
+                    <ZakupkiInfo data={tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo}/>
+                    {
+                        tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject ? (
                     <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                         <FlexTextColumn>
                             <Table>
@@ -205,71 +208,6 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                     </BorderedComtainer>
                     ) : null }
-                    <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
-                        <FlexTextColumn>
-                            <Table>
-                                <tbody>
-                                <TableRow>
-                                    <TableCell><TextBlack14pxBold>КОД ПОЗИЦИИ</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>НАИМЕНОВАНИЕ ТОВАРА, РАБОТЫ, УСЛУГИ</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>ЕД. ИЗМЕРЕНИЯ</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>КОЛИЧЕСТВО (ОБЪЕМ РАБОТЫ, УСЛУГИ)</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>ЦЕНА ЗА ЕД., ₽</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>СТОИМОСТЬ, ₽</TextBlack14pxBold></TableCell>
-                                </TableRow>
-                                {
-                                    Object.values(tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject)
-                                        .map((item, index) => (
-                                        <TableRow key={index}>
-                                            <TableCell>
-                                                {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
-                                            </TableCell>
-                                            <TableCell>
-                                                <FlexTextColumn>
-                                                    <FlexTextRow>
-                                                        {item.name ? (
-                                                            <TextBlack14pxRegular key={index}>{item?.name}</TextBlack14pxRegular>
-                                                        ) : null}
-                                                    </FlexTextRow>
-                                                    {
-                                                        item?.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ? (
-                                                            <FlexTextColumn>
-                                                                {item.KTRU && item.KTRU.characteristics.characteristicsUsingTextForm ?
-                                                                    !item.KTRU.characteristics.characteristicsUsingTextForm.length ?
-                                                                        (Object.values(item.KTRU?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                        ))) :
-                                                                        [item.KTRU?.characteristics?.characteristicsUsingTextForm].map((item,index) => (
-                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                        )) :
-                                                                    !item.OKPD2?.characteristics?.characteristicsUsingTextForm.length ?
-                                                                    Object.values(item.OKPD2?.characteristics?.characteristicsUsingTextForm).map((item,index) => (
-                                                                        <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                    )) :
-                                                                       [item.OKPD2?.characteristics?.characteristicsUsingTextForm].map((item,index) => (
-                                                                            <TextGray14pxRegular key={index}>{item?.name ? (item?.name) : ''} {item?.values?.value?.rangeSet?.min ? (item?.values?.value?.rangeSet?.min) : ''} {item?.values?.value?.OKEI?.nationalCode ? (item?.values?.value?.OKEI?.nationalCode) : ''}</TextGray14pxRegular>
-                                                                        ))
-                                                                }
-                                                            </FlexTextColumn>
-                                                        ) : ''
-                                                    }
-                                                </FlexTextColumn>
-                                            </TableCell>
-                                            <TableCell>{item?.OKEI?.name}</TableCell>
-                                            <TableCell>{item?.OKEI?.name}</TableCell>
-                                            <TableCell>{item?.quantity?.value}</TableCell>
-                                            <TableCell>{item?.price}</TableCell>
-                                            <TableCell>{item?.sum}</TableCell>
-                                        </TableRow>
-                                    ))
-                                }
-                                </tbody>
-                            </Table>
-                            <FlexTextRow style={{justifyContent: 'flex-end'}}>
-                                <TextBlack22pxBold>Итого: {tender.tender[0].notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack22pxBold>
-                            </FlexTextRow>
-                        </FlexTextColumn>
-                    </BorderedComtainer>
                     <BorderedComtainer>
                         <TextBlack14pxBold>Условия контракта</TextBlack14pxBold>
                         <FlexTextRow>
