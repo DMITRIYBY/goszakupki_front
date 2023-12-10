@@ -35,13 +35,13 @@ export const TenderPreiewCard223: FC<ITender> = ({jsonData}) => {
                         <TextBlue16pxSemiBold style={{width: '60%'}}>
                           223-ФЗ Электронный аукцион
                         </TextBlue16pxSemiBold>
-                        {jsonData?.registrationNumber && (
+                        {jsonData?.registrationNumber ? (
                             <Link to={`/tender/${jsonData?.registrationNumber}`}>
                                 <TextBlue16pxSemiBold style={{width: '40%'}}>
                                     № {jsonData.registrationNumber}
                                 </TextBlue16pxSemiBold>
                             </Link>
-                        )}
+                        ) : null}
                     </FlexTextRow>
                     <FlexTextColumn style={{gap: '10px', marginTop: '10px', paddingRight: '10px'}}>
                         <FlexRow>
