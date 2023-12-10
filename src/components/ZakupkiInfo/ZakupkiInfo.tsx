@@ -31,7 +31,7 @@ interface Info {
 export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
  setTimeout(() => console.log(data), 3000);
 //@ts-ignore
-   const info: Info[] | null = data.purchaseObject ? [data.purchaseObject].flat().map((one: IPurchaseObject&unknown) => {
+   const info: Info[] | null = data?.purchaseObject ? [data.purchaseObject].flat().map((one: IPurchaseObject&unknown) => {
         let characteristics;
         let OKPD2;
         const { name, OKEI, price, sum, quantity } = one
