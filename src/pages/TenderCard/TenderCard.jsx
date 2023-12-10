@@ -70,7 +70,7 @@ export const TenderCard = () => {
     console.log(...Object.values(tender).flat())
 
     return (
-        tender.tender[0].commonInfo ? (
+        tender?.tender[0]?.commonInfo ? (
         <Fragment>
             <PageContainer>
                 <LeftSideSection35>
