@@ -37,14 +37,14 @@ export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
         const { name, OKEI, price, sum, quantity } = one
         switch (true) {
             case !(one.KTRU == undefined) : {
-                characteristics = one.KTRU.characteristics.characteristicsUsingTextForm ||
-                   one.KTRU.characteristics.characteristicsUsingReferenceInfo;
+                characteristics = one.KTRU.characteristics?.characteristicsUsingTextForm ||
+                   one.KTRU.characteristics?.characteristicsUsingReferenceInfo;
                 OKPD2 = one.KTRU?.OKPD2;
                 break
             }
             case !(one.OKPD2 == undefined) : {
                 OKPD2 = one.OKPD2;
-                characteristics = one.OKPD2?.characteristics.characteristicsUsingTextForm;
+                characteristics = one.OKPD2?.characteristics?.characteristicsUsingTextForm;
                 break
             }
             default:
