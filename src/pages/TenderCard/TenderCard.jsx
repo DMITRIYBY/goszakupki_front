@@ -67,13 +67,13 @@ export const TenderCard = () => {
         setProtocolsContainerVisible(!isProtocolsContainerVisible);
     };
 
-    console.log(...Object.values(tender).flat())
+    setTimeout(() => console.log('warranty', tender?.tender[0]));
 
     return (
-        tender?.tender[0]?.commonInfo ? (
         <Fragment>
             <PageContainer>
                 <LeftSideSection35>
+                    {tender?.tender[0]?.commonInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Общая информация</TextBlack14pxBold>
                         <FlexTextColumn>
@@ -92,44 +92,13 @@ export const TenderCard = () => {
                             <TextGray14pxRegular>Наименование электронной площадки</TextGray14pxRegular>
                             <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.ETP?.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
-                        {/*<FlexTextColumn>*/}
-                        {/*    <TextGray14pxRegular>Заказчик</TextGray14pxRegular>*/}
-                        {/*    <TextBlack14pxRegular>{tender?.tender?.[0]?.purchaseResponsibleInfo?.responsibleOrgInfo?.fullName}</TextBlack14pxRegular>*/}
-                        {/*</FlexTextColumn>*/}
                         <FlexTextColumn>
                             <TextGray14pxRegular>Официальный сайт</TextGray14pxRegular>
-                            <a href={'https://zakupki.gov.ru/epz/main/public/home.htmlhtki.gov.ru/epz/main/public/'}>
-                            <TextBlack14pxRegular>https://zakupki.gov.ru/epz/main/public/home.htmlhtki.gov.ru/epz/main/public/</TextBlack14pxRegular>
+                            <a href={tender?.tender?.[0]?.commonInfo?.ETP?.url}>
+                            <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.ETP?.url}</TextBlack14pxRegular>
                             </a>
                         </FlexTextColumn>
-                    </BorderedComtainer>
-                    {/*<BorderedComtainer>*/}
-                    {/*    <TextBlack14pxBold>Порядок размещения заказа</TextBlack14pxBold>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Дата публикации извещения</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>31.12.2019 14:23 (МСК +00:00)</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Дата и время окончания подачи заявок</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>15.01.2020 в 08:00 (МСК +00:00)</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Место подачи заявок</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular >{tender?.tender?.[0]?.printFormInfo?.url}</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Порядок подачи заявок</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>В соответствии с пунктами 25, 26 раздела I документации</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Дата рассмотрения и оценки заявок</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>16.01. 2020</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*    <FlexTextColumn>*/}
-                    {/*        <TextGray14pxRegular>Дата и время проведения аукциона в электронной форме</TextGray14pxRegular>*/}
-                    {/*        <TextBlack14pxRegular>17.01.2020 в 09:00 (МСК +00:00)</TextBlack14pxRegular>*/}
-                    {/*    </FlexTextColumn>*/}
-                    {/*</BorderedComtainer>*/}
+                    </BorderedComtainer>) : null}
                     {tender?.tender[0]?.purchaseResponsibleInfo?.responsibleOrgInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>
@@ -151,7 +120,7 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Телефон</TextGray14pxRegular>
-                            <TextBlack14pxRegular>+{tender?.tender[0]?.purchaseResponsibleInfo?.responsibleInfo?.contactPhone}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender[0]?.purchaseResponsibleInfo?.responsibleInfo?.contactPhone}</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular>Электронная почта</TextGray14pxRegular>
@@ -161,59 +130,67 @@ export const TenderCard = () => {
                     ) : null }
                 </LeftSideSection35>
                 <RightSideSection65>
-                    { tender?.tender[0]?.notificationInfo ?
+                     { tender?.tender[0]?.notificationInfo ?
                         (<BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Цена контракта</TextGray14pxRegular>
                             <TextBlack22pxBold>{tender?.tender[0]?.notificationInfo?.contractConditionsInfo?.maxPriceInfo?.maxPrice} ₽</TextBlack22pxBold>
                         </FlexTextColumn>
+                            {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.amount ? (
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Обеспечение заявки</TextGray14pxRegular>
                             <TextBlack22pxBold>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.amount} ₽</TextBlack22pxBold>
-                        </FlexTextColumn>
+                        </FlexTextColumn> ) : null }
+                            {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount ? (
                         <FlexTextColumn style={{width: 'fit-content'}}>
                             <TextGray14pxRegular>Обеспечение контракта</TextGray14pxRegular>
                             <TextBlack22pxBold>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ₽</TextBlack22pxBold>
-                            <TextBlack22pxBold>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.amount} ₽</TextBlack22pxBold>
-                        </FlexTextColumn>
+                        </FlexTextColumn> ) : null }
                     </BorderedComtainer>)
                         : null }
+                    { tender?.tender[0]?.notificationInfo?.procedureInfo ?
+                        (
+                            <BorderedComtainer>
+                            <TextBlack22pxBold>Информация о процедуре закупки</TextBlack22pxBold>
+                            {tender?.tender[0]?.notificationInfo?.procedureInfo?.collectingInfo?.startDT ?
+                                (<FlexTextRow>
+                                    <TextGray14pxRegular>Дата и время начала срока подачи заявок</TextGray14pxRegular>
+                                    <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.collectingInfo?.startDT}</TextBlack14pxRegular>
+                                </FlexTextRow>)
+                               : null }
+                            {tender?.tender[0]?.notificationInfo?.procedureInfo?.collectingInfo?.endDT ?
+                                (<FlexTextRow>
+                                    <TextGray14pxRegular>Дата и время окончания срока подачи заявок</TextGray14pxRegular>
+                                    <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.collectingInfo?.endDT}</TextBlack14pxRegular>
+                                </FlexTextRow>) : null }
+                            {tender?.tender[0]?.notificationInfo?.procedureInfo?.biddingDate ?
+                                (<FlexTextRow>
+                                    <TextGray14pxRegular>Дата проведения процедуры подачи предложений о цене контракта либо о сумме цен единиц товара, работы, услуги</TextGray14pxRegular>
+                                    <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.biddingDate}</TextBlack14pxRegular>
+                                </FlexTextRow>) : null }
+                                {tender?.tender[0]?.notificationInfo?.procedureInfo?.firstPartsDate ?
+                                    (<FlexTextRow>
+                                        <TextGray14pxRegular>Дата окончания срока рассмотрения и оценки первых частей заявок</TextGray14pxRegular>
+                                        <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.firstPartsDate}</TextBlack14pxRegular>
+                                    </FlexTextRow>) : null }
+                                {tender?.tender[0]?.notificationInfo?.procedureInfo?.submissionProcedureDate ?
+                                    (<FlexTextRow>
+                                        <TextGray14pxRegular>Дата проведения процедуры подачи предложений о цене контракта</TextGray14pxRegular>
+                                        <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.submissionProcedureDate}</TextBlack14pxRegular>
+                                    </FlexTextRow>) : null }
+                                {tender?.tender[0]?.notificationInfo?.procedureInfo?.secondPartsDate ?
+                                    (<FlexTextRow>
+                                        <TextGray14pxRegular>Дата окончания срока рассмотрения и оценки вторых частей заявок</TextGray14pxRegular>
+                                        <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.secondPartsDate}</TextBlack14pxRegular>
+                                    </FlexTextRow>) : null }
+                            {tender?.tender[0]?.notificationInfo?.procedureInfo?.summarizingDate ?
+                                (<FlexTextRow>
+                                    <TextGray14pxRegular>Дата подведения итогов определения поставщика (подрядчика, исполнителя)</TextGray14pxRegular>
+                                    <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.procedureInfo?.summarizingDate}</TextBlack14pxRegular>
+                                </FlexTextRow>) : null }
+                        </BorderedComtainer>)
+                        : null }
                     <ZakupkiInfo data={tender?.tender[0]?.notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo}/>
-                    {
-                        tender?.tender[0]?.notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject ? (
-                    <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
-                        <FlexTextColumn>
-                            <Table>
-                                <tbody>
-                                <TableRow>
-                                    <TableCell><TextBlack14pxBold>Информация об объекте закупки</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>ОКПД2</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>Количество</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>Цена</TextBlack14pxBold></TableCell>
-                                    <TableCell><TextBlack14pxBold>Стоимость</TextBlack14pxBold></TableCell>
-                                </TableRow>
-                                {
-                                    Object.values(tender?.tender[0]?.notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.purchaseObject).map((item, index) => (
-                                        <TableRow key={index}>
-                                            <TableCell>{item?.name}</TableCell>
-
-                                            <TableCell>
-                                                {item.KTRU ? (item?.KTRU?.OKPD2?.OKPDCode) : item?.OKPD2?.OKPDCode }
-                                            </TableCell>
-                                            <TableCell>{item?.quantity?.value} {item?.OKEI?.nationalCode}</TableCell>
-                                            <TableCell>{item?.price}</TableCell>
-                                            <TableCell>{item?.sum}</TableCell>
-                                        </TableRow>
-                                    ))
-                                }
-                                </tbody>
-                            </Table>
-                            <FlexTextRow style={{justifyContent: 'flex-end'}}>
-                                <TextBlack14pxBold>Итого: {tender?.tender[0]?.notificationInfo?.purchaseObjectsInfo?.notDrugPurchaseObjectsInfo?.totalSum} ₽</TextBlack14pxBold>
-                            </FlexTextRow>
-                        </FlexTextColumn>
-                    </BorderedComtainer>
-                    ) : null }
                     <BorderedComtainer>
                         <TextBlack14pxBold>Условия контракта</TextBlack14pxBold>
                         <FlexTextRow>
@@ -231,36 +208,47 @@ export const TenderCard = () => {
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Место доставки товара, выполнения работы или оказания услуги</TextGray14pxRegular>
                             <TextBlack14pxRegular>
-                                {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.deliveryPlacesInfo?.deliveryPlaceInfo?.kladr?.fullName},
                                 {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.deliveryPlacesInfo?.deliveryPlaceInfo?.deliveryPlace}
                             </TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
-                            <TextGray14pxRegular style={{width: '35%'}}>Сроки поставки товара или завершения работы либо график оказания услуг</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender?.tender[0]?.purchaseResponsibleInfo?.responsibleOrgInfo?.fullName}</TextBlack14pxRegular>
+                            <TextGray14pxRegular style={{width: '35%'}}>Предусмотрена возможность одностороннего отказа от исполнения контракта в соответствии со ст. 95 Закона № 44-ФЗ</TextGray14pxRegular>
+                            <TextBlack14pxRegular>
+                                {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.isOneSideRejectionSt95 ? "Да" : "Нет"}
+                            </TextBlack14pxRegular>
                         </FlexTextRow>
                     </BorderedComtainer>
                     <BorderedComtainer>
                         <TextBlack14pxBold>Преимущества и требования к участникам</TextBlack14pxBold>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Преимущества</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.preferensesInfo?.preferenseInfo?.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender?.tender[0]?.notificationInfo?.preferensesInfo?.preferenseInfo?.preferenseRequirementInfo?.name ?
+                                tender?.tender[0]?.notificationInfo?.preferensesInfo?.preferenseInfo?.preferenseRequirementInfo?.name :
+                            "Не установлены"
+                            }</TextBlack14pxRegular>
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Требования к участникам</TextGray14pxRegular>
-                            <ol>
-                                {
-                                    tender?.tender[0]?.notificationInfo?.requirementsInfo?.requirementInfo?.map((item,index) => (
+                            { tender?.tender[0]?.notificationInfo?.requirementsInfo?.requirementInfo?.length ?
+                                (<ol>
+                                { tender?.tender[0]?.notificationInfo?.requirementsInfo?.requirementInfo?.map((item,index) => (
                                         <li>
                                             <TextBlack14pxRegular key={index}>{item.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
                                         </li>
+
                                     ))
                                 }
-                            </ol>
+                            </ol>) : <TextBlack14pxRegular> Не установлены </TextBlack14pxRegular>
+                            }
                         </FlexTextRow>
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Ограничения</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.restrictionsInfo?.restrictionInfo?.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender?.tender[0]?.notificationInfo?.restrictionsInfo?.restrictionInfo?.preferenseRequirementInfo?.name ?
+                                    tender?.tender[0]?.notificationInfo?.restrictionsInfo?.restrictionInfo?.preferenseRequirementInfo?.name :
+                                    "Не установлены"
+                            }</TextBlack14pxRegular>
                         </FlexTextRow>
                     </BorderedComtainer>
                     {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee ? (
@@ -307,10 +295,6 @@ export const TenderCard = () => {
                     ) : null }
                     <BorderedComtainer>
                         <TextBlack14pxBold>Начальная(максимальная) цена контракта</TextBlack14pxBold>
-                        {/*<FlexTextColumn>*/}
-                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
-                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
-                        {/*</FlexTextColumn>*/}
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Начальная(максимальная) цена контракта</TextGray14pxRegular>
                             <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.contractConditionsInfo?.maxPriceInfo?.maxPrice}</TextBlack14pxRegular>
@@ -400,24 +384,24 @@ export const TenderCard = () => {
                     { tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Информация о сроках исполнения контракта и источниках финансирования</TextBlack14pxBold>
-                        {/*<FlexTextColumn>*/}
-                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
-                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
-                        {/*</FlexTextColumn>*/}
                         <FlexTextColumn>
-                            <TextGray14pxRegular style={{width: '35%'}}>Дата начала исполнения контрактаы</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.startDate}</TextBlack14pxRegular>
+                            <TextGray14pxRegular style={{width: '35%'}}>Дата начала исполнения контракта</TextGray14pxRegular>
+                            <TextBlack14pxRegular>{
+                                tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.isFromConclusionDate ?
+                                   'с даты заключения контракта' :
+                                tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.startDate }</TextBlack14pxRegular>
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Срок исполнения контракта</TextGray14pxRegular>
                             <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.contractExecutionTermsInfo?.notRelativeTermsInfo?.endDate}</TextBlack14pxRegular>
                         </FlexTextColumn>
+                        {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.stagesInfo?.length ? (
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Количество этапов</TextGray14pxRegular>
                             <TextBlack14pxRegular>{
                               tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.stagesInfo?.length
                             }</TextBlack14pxRegular>
-                        </FlexTextColumn>
+                        </FlexTextColumn> ) : null }
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Наименование бюджета</TextGray14pxRegular>
                             <TextBlack14pxRegular>{
@@ -429,18 +413,22 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.OKTMOInfo?.code}: {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.OKTMOInfo?.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer> ) : null }
+                    {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Требования к гарантии качества товара, работы, услуги</TextBlack14pxBold>
-                        {/*<FlexTextColumn>*/}
-                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
-                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
-                        {/*</FlexTextColumn>*/}
-                        {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo ? (
                             <FlexTextColumn>
+                                <TextGray14pxRegular style={{width: '35%'}}>Требуется гарантия качества товара, работы, услуги</TextGray14pxRegular>
+                                <TextBlack14pxRegular> Да </TextBlack14pxRegular>
                                 <TextGray14pxRegular style={{width: '35%'}}>Срок, на который предоставляется гарантия и (или) требования к объёму предоставления гарантий качества товара.</TextGray14pxRegular>
                                 <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo?.warrantyTerm}</TextBlack14pxRegular>
+                                <TextGray14pxRegular style={{width: '35%'}}>Информация о требованиях к гарантийному обслуживанию товара</TextGray14pxRegular>
+                                <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo?.manufacturersWarrantyRequirement}</TextBlack14pxRegular>
+                                <TextGray14pxRegular style={{width: '35%'}}>Срок, на который предоставляется гарантия и (или) требования к объёму предоставления гарантий качества товара.</TextGray14pxRegular>
+                                <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.warrantyInfo?.warrantyServiceRequirement}</TextBlack14pxRegular>
                             </FlexTextColumn>
-                        ) : null}
+                        </BorderedComtainer>
+                    ) : null }
+                        <BorderedComtainer>
                         { tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.financeInfo ? (
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Финансовое обеспечение закупки</TextGray14pxRegular>
@@ -498,10 +486,6 @@ export const TenderCard = () => {
                     </BorderedComtainer>
                     <BorderedComtainer>
                         <TextBlack14pxBold>Обеспечение гарантийных обязательств</TextBlack14pxBold>
-                        {/*<FlexTextColumn>*/}
-                        {/*    <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение исполнения контракта</TextGray14pxRegular>*/}
-                        {/*    <TextBlack14pxRegular></TextBlack14pxRegular>*/}
-                        {/*</FlexTextColumn>*/}
                         {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.provisionWarranty ? (
                             <FlexTextColumn>
                                 <TextGray14pxRegular style={{width: '35%'}}>Требуется обеспечение гарантийных обязательств</TextGray14pxRegular>
@@ -530,13 +514,12 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                     </BorderedComtainer>
                     {
-                        tender?.tender[0]?.notificationInfo?.criteriaInfo?.criterionInfo ? (
-                           <CriterialInfo criterias={tender?.tender[0]?.notificationInfo.criteriaInfo.criterionInfo}/>
+                        tender?.tender[0]?.notificationInfo?.criteriaInfo ? (
+                           <CriterialInfo criterias={tender?.tender[0]?.notificationInfo?.criteriaInfo?.criterionInfo}/>
                         ) : null
                     }
                     <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
             </PageContainer>
         </Fragment>
-    ) :  (<JsonRenderer tenderID={id}/>)
     )}

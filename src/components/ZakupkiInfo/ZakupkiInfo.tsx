@@ -50,7 +50,6 @@ export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
             default:
                 return null;
         }
-        console.log(OKPD2)
         return { characteristics, OKPD2, name, OKEI, price, sum, quantity }
     }) : null
 
@@ -58,6 +57,7 @@ export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
                     return(
                         <BorderedComtainer style={{flexDirection: 'row' ,justifyContent: 'space-between', padding: '25px 50px 25px 50px'}}>
                             <FlexTextColumn>
+                               <TextBlack14pxBold>Информация об объекте закупки</TextBlack14pxBold>
                                 <Table>
                                     <tbody>
                                     <TableRow>

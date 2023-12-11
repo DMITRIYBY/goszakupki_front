@@ -2,6 +2,7 @@ import {BorderedComtainer} from "../../TenderCard/styles";
 import {TextBlack14pxBold, TextBlack14pxRegular, TextGray14pxRegular} from "../../../constants/fonts";
 import {FlexTextColumn} from "../../../containers/containers";
 import {FC, useEffect, useState} from "react";
+import {Table, TableCell, TableRow} from "./styles";
 
 interface Criterion {
     name: string;
@@ -92,63 +93,63 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
     return (
             <BorderedComtainer>
                 <TextBlack14pxBold>Критерии оценки заявок участиков</TextBlack14pxBold>
-        <table>
+                <Table>
             <thead>
-            <tr>
-                <th> <TextGray14pxRegular style={{width: '35%'}}>Наименование критерия </TextGray14pxRegular></th>
-                  <TextGray14pxRegular style={{width: '35%'}}>Значимость критерия, %</TextGray14pxRegular>
-            </tr>
+              <TableRow>
+                  <TableCell> <TextGray14pxRegular style={{width: '35%'}}>Наименование критерия </TextGray14pxRegular> </TableCell>
+                  <TableCell><TextGray14pxRegular style={{width: '35%'}}>Значимость критерия, %</TextGray14pxRegular> </TableCell>
+            </TableRow>
             </thead>
             <tbody>
             {critData.map((crit, index) => (
-                <tr key={index}>
-                    <td>
-                        <table>
+                <TableRow key={index}>
+                    <TableCell>
+                        <Table>
                             <thead>
-                            <tr>
-                                <td><TextBlack14pxRegular style={{width: '35%'}}>{crit?.name}</TextBlack14pxRegular></td>
-                                <td><TextBlack14pxRegular style={{width: '35%'}}>{crit?.value}</TextBlack14pxRegular></td>
-                            </tr>
-                            <tr>
-                                <td> <TextGray14pxRegular> Показатели критерия оценки заявок </TextGray14pxRegular></td>
-                            </tr>
+                            <TableRow>
+                                <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{crit?.name}</TextBlack14pxRegular></TableCell>
+                                <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{crit?.value}</TextBlack14pxRegular></TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell> <TextGray14pxRegular> Показатели критерия оценки заявок </TextGray14pxRegular></TableCell>
+                            </TableRow>
                             </thead>
                             <tbody>
 
                                     {crit?.indicators?.map((indicator, indIndex) => (
-                                        <tr>
-                                            <td>
-                                                <table>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Table>
                                                     <thead>
-                                                    <tr>
-                                                        <td><TextBlack14pxRegular style={{width: '35%'}}>{indicator.name}</TextBlack14pxRegular></td>
-                                                        <td><TextBlack14pxRegular style={{width: '35%'}}>{indicator.value}</TextBlack14pxRegular></td>
-                                                    </tr>
+                                                    <TableRow>
+                                                        <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{indicator.name}</TextBlack14pxRegular></TableCell>
+                                                        <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{indicator.value}</TextBlack14pxRegular></TableCell>
+                                                    </TableRow>
                                                     </thead>
                                                          <tbody>
                                                             {indicator.details.map((detail, detailIndex) => (
-                                                                <tr>
-                                                                    <td><TextBlack14pxRegular style={{width: '35%'}}>{detail.name}</TextBlack14pxRegular></td>
-                                                                    <td><TextBlack14pxRegular style={{width: '35%'}}>{detail.value}</TextBlack14pxRegular></td>
-                                                                </tr>
+                                                                <TableRow>
+                                                                    <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{detail.name}</TextBlack14pxRegular></TableCell>
+                                                                    <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{detail.value}</TextBlack14pxRegular></TableCell>
+                                                                </TableRow>
                                                             ))}
                                                          </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
+                                                </Table>
+                                            </TableCell>
+                                        </TableRow>
                                     ))}
 
                             </tbody>
-                        </table>
-                    </td>
+                        </Table>
+                    </TableCell>
 
-                                {/*        <td>{crit?.indicators?.map((indicator) => indicator.purchaseObjectCharsInfo?.name)}</td>*/}
-                                {/*        <td>{crit?.indicators?.map((indicator) => indicator.addInfo)}</td>*/}
+                                {/*        <TableCell>{crit?.indicators?.map((indicator) => indicator.purchaseObjectCharsInfo?.name)}</TableCell>*/}
+                                {/*        <TableCell>{crit?.indicators?.map((indicator) => indicator.addInfo)}</TableCell>*/}
 
-                </tr>
+                </TableRow>
             ))}
             </tbody>
-        </table>
+        </Table>
             </BorderedComtainer>
     );
 };
