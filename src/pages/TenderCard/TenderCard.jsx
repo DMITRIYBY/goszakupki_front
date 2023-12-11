@@ -67,13 +67,13 @@ export const TenderCard = () => {
         setProtocolsContainerVisible(!isProtocolsContainerVisible);
     };
 
-    setTimeout(() => console.log('warranty', tender?.tender[0]));
 
     return (
-        <Fragment>
+
+         <Fragment>
+             {tender?.tender[0]?.commonInfo ? (
             <PageContainer>
                 <LeftSideSection35>
-                    {tender?.tender[0]?.commonInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Общая информация</TextBlack14pxBold>
                         <FlexTextColumn>
@@ -98,7 +98,7 @@ export const TenderCard = () => {
                             <TextBlack14pxRegular>{tender?.tender?.[0]?.commonInfo?.ETP?.url}</TextBlack14pxRegular>
                             </a>
                         </FlexTextColumn>
-                    </BorderedComtainer>) : null}
+                    </BorderedComtainer>
                     {tender?.tender[0]?.purchaseResponsibleInfo?.responsibleOrgInfo ? (
                     <BorderedComtainer>
                         <TextBlack14pxBold>Контактная информация</TextBlack14pxBold>
@@ -530,7 +530,7 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Код территории муниципального образования</TextGray14pxRegular>
-                            <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.code}: {tender?.tender[0]?.notificationInfo.customerRequirementsInfo.customerRequirementInfo.contractConditionsInfo.contractExecutionPaymentPlan.financingSourcesInfo.budgetFinancingsInfo.OKTMOInfo.name}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>{tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.OKTMOInfo?.code}: {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractConditionsInfo?.contractExecutionPaymentPlan?.financingSourcesInfo?.budgetFinancingsInfo?.OKTMOInfo?.name}</TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
                     {
@@ -540,6 +540,6 @@ export const TenderCard = () => {
                     }
                     <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
-            </PageContainer>
+            </PageContainer> ) : (  <JsonRenderer tenderID={id}/> )}
         </Fragment>
     )}
