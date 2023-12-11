@@ -95,7 +95,7 @@ export const Catalog: FC = () => {
                 {tenders
                     .map((item: Tender, index) => (
                     // Проверка на null перед отображением TenderPreiewC
-                    item !== undefined || null ?
+                    item ?
                         item?.fz === 'fz223' ? (<TenderPreiewCard223 key={index}  jsonData={item}/>):
                             (<TenderPreiewCard44 key={index}  jsonData={item}/>)
                         : null
