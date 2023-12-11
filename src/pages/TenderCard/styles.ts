@@ -51,10 +51,21 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
+  font-family: 'Open-Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
   text-align: left; //need to right
   padding: 8px;
+`;
+
+export const LoaderTest = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const OrderedList = styled.ol`

@@ -5,7 +5,7 @@ import {
     BorderOpeningContainer, Table, TableRow, TableCell,
     LeftSideSection35,
     PageContainer,
-    RightSideSection65, OrderedList, ListItem
+    RightSideSection65, OrderedList, ListItem, LoaderTest
 } from "./styles";
 import {
     TextBlack14pxBold,
@@ -24,6 +24,7 @@ import JsonRenderer from "../JsonRenderer";
 import {testTender1} from "./testTender1";
 import {CriterialInfo} from "../TenderComponents/CriterialInfo/CriterialInfo";
 import {ZakupkiInfo} from "../../components/ZakupkiInfo/ZakupkiInfo";
+import { TailSpin } from 'react-loader-spinner';
 
 export const TenderCard = () => {
 
@@ -32,7 +33,7 @@ export const TenderCard = () => {
     const [isSecondContainerVisible, setSecondContainerVisible] = useState(false);
     const [isThirdContainerVisible, setThirdContainerVisible] = useState(false);
     const [isProtocolsContainerVisible, setProtocolsContainerVisible] = useState(false);
-
+    const [loading, setLoading] = useState(true)
 
     const formatDate = (originalDate) => {
         const parsedDate = parseISO(originalDate);
@@ -71,7 +72,13 @@ export const TenderCard = () => {
 
     return (
 
-         <Fragment>
+
+        <Fragment>
+                 {loading ? (
+                     <LoaderTest>
+                         <TailSpin color="#3294F4" height={150} width={150} />
+                     </LoaderTest>
+                 ) : (
             <PageContainer>
                 <LeftSideSection35>
                     <BorderedComtainer>
@@ -541,5 +548,6 @@ export const TenderCard = () => {
                     <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
             </PageContainer>
+                 )}
         </Fragment>
     )}
