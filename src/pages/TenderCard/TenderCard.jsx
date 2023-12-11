@@ -47,6 +47,7 @@ export const TenderCard = () => {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`, { timeout: 4000 });
                 console.log(response.data)
                 setTender(response.data);
+                setLoading(false)
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
             }
