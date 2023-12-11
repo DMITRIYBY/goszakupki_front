@@ -43,7 +43,7 @@ export const TenderCard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`, { timeout: 4000 });
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`, { timeout: 0, maxContentLength: 0 });
                 console.log(response.data)
                 setTender(response.data);
             } catch (error) {
