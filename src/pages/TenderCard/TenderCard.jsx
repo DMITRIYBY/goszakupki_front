@@ -27,7 +27,7 @@ import {ZakupkiInfo} from "../../components/ZakupkiInfo/ZakupkiInfo";
 
 export const TenderCard = () => {
 
-    const [tender, setTender] = useState(testTender1)
+    const [tender, setTender] = useState()
     const { id } = useParams();
     const [isSecondContainerVisible, setSecondContainerVisible] = useState(false);
     const [isThirdContainerVisible, setThirdContainerVisible] = useState(false);
