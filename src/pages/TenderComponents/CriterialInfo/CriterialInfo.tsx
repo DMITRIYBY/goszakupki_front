@@ -61,7 +61,7 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                 const details: Detail[] = [detailIndicatorsInfo].flat().map((one) => {
                     return [one.detailIndicatorInfo].flat().map((one) => {
                         const { value, indicatorInfo } = one;
-                        const { manualEnteredName, indicatorDictInfo } = indicatorInfo;
+                        const { manualEnteredName, indicatorDictInfo, orderEvalIndicatorsInfo } = indicatorInfo;
                         const name = manualEnteredName || indicatorDictInfo?.name;
                         return {
                             name,
@@ -129,6 +129,12 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                                                                 <TableRow>
                                                                     <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{detail.name}</TextBlack14pxRegular></TableCell>
                                                                     <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{detail.value}</TextBlack14pxRegular></TableCell>
+                                                                    <TableCell><FlexTextColumn style={{width: '35%'}}>
+                                                                        <TextGray14pxRegular style={{width: '35%'}}>Mock Row</TextGray14pxRegular>
+                                                                        <TextGray14pxRegular style={{width: '35%'}}>Mock Row</TextGray14pxRegular>
+                                                                        <TextGray14pxRegular style={{width: '35%'}}>Mock Row</TextGray14pxRegular>
+                                                                    </FlexTextColumn>
+                                                                    </TableCell>
                                                                 </TableRow>
                                                             ))}
                                                          </tbody>
