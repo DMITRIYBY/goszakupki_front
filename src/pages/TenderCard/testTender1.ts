@@ -7158,6 +7158,13 @@ export const testTender1 = {
                             "preferenseRequirementInfo": {
                                 "shortName": "ET44",
                                 "name": "Единые требования к участникам закупок в соответствии с ч. 1 ст. 31 Закона № 44-ФЗ"
+                            },
+                            "addRequirements": {
+                                "addRequirement": {
+                                    "shortname": "",
+                                    "name" : "",
+                                    "content" : ""
+                                }
                             }
                         },
                         {

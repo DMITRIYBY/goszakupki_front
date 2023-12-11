@@ -5,13 +5,13 @@ import {
     BorderOpeningContainer, Table, TableRow, TableCell,
     LeftSideSection35,
     PageContainer,
-    RightSideSection65
+    RightSideSection65, OrderedList, ListItem
 } from "./styles";
 import {
     TextBlack14pxBold,
     TextBlack14pxRegular,
     TextBlack22pxBold, TextBlack22pxRegular,
-    TextBlue14pxRegular,
+    TextBlue14pxRegular, TextGray11pxRegular,
     TextGray14pxRegular
 } from "../../constants/fonts";
 import {FlexTextColumn, FlexTextRow} from "../../containers/containers";
@@ -231,15 +231,27 @@ export const TenderCard = () => {
                         <FlexTextRow>
                             <TextGray14pxRegular style={{width: '35%'}}>Требования к участникам</TextGray14pxRegular>
                             { tender?.tender[0]?.notificationInfo?.requirementsInfo?.requirementInfo?.length ?
-                                (<ol>
+                                (<OrderedList>
                                 { tender?.tender[0]?.notificationInfo?.requirementsInfo?.requirementInfo?.map((item,index) => (
-                                        <li>
-                                            <TextBlack14pxRegular key={index}>{item.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
-                                        </li>
-
+                                       <ListItem>
+                                           <TextBlack14pxRegular key={index}>{item.preferenseRequirementInfo?.name}</TextBlack14pxRegular>
+                                                { item.addRequirements ? (
+                                                    <OrderedList>
+                                                        {
+                                                            [item.addRequirements].flat().map((one, index) => (
+                                                                <ListItem key={index} >
+                                                                    <TextBlack14pxRegular>{one.addRequirement.name}</TextBlack14pxRegular>
+                                                                    <TextGray11pxRegular> Дополнительные требования </TextGray11pxRegular>
+                                                                    <TextBlack14pxRegular>{one.addRequirement.content}</TextBlack14pxRegular>
+                                                                </ListItem>
+                                                            ))
+                                                        }
+                                                     </OrderedList>
+                                                ) : null }
+                                        </ListItem>
                                     ))
                                 }
-                            </ol>) : <TextBlack14pxRegular> Не установлены </TextBlack14pxRegular>
+                            </OrderedList>) : <TextBlack14pxRegular> Не установлены </TextBlack14pxRegular>
                             }
                         </FlexTextRow>
                         <FlexTextRow>
@@ -268,7 +280,11 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Платежные реквизиты для обеспечения исполнения контракта</TextGray14pxRegular>
-                            <TextBlack14pxRegular>р/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.settlementAccount} л/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount}, БИК {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>р/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.settlementAccount}
+                                л/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount},
+                                БИК {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik},
+                                {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.creditOrgName}
+                            </TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
                     ) : null }
@@ -289,7 +305,11 @@ export const TenderCard = () => {
                         </FlexTextColumn>
                         <FlexTextColumn>
                             <TextGray14pxRegular style={{width: '35%'}}>Платежные реквизиты для обеспечения исполнения контракта</TextGray14pxRegular>
-                            <TextBlack14pxRegular>р/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.account?.settlementAccount} л/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount}, БИК {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik}</TextBlack14pxRegular>
+                            <TextBlack14pxRegular>р/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.applicationGuarantee?.account?.settlementAccount}
+                                л/с {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.personalAccount},
+                                БИК {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.bik},
+                                 {tender?.tender[0]?.notificationInfo?.customerRequirementsInfo?.customerRequirementInfo?.contractGuarantee?.account?.creditOrgName}
+                            </TextBlack14pxRegular>
                         </FlexTextColumn>
                     </BorderedComtainer>
                     ) : null }

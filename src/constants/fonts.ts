@@ -33,6 +33,14 @@ export const TextGray14pxRegular = styled.p`
   font-size: 14px;
   width: fit-content;
 `;
+
+export const TextGray11pxRegular = styled.p`
+  font-family: 'Open-Sans', sans-serif;
+  color: #909EBB;
+  font-size: 11px;
+  width: fit-content;
+`;
+
 export const TextWhite14pxRegular = styled.p`
   font-family: 'Open-Sans', sans-serif;
   color: white;
