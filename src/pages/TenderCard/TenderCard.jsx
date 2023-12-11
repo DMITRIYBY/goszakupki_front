@@ -43,7 +43,8 @@ export const TenderCard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tender?id=${id}`, { timeout: 4000 });
+                console.log(response.data)
                 setTender(response.data);
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
@@ -71,7 +72,6 @@ export const TenderCard = () => {
     return (
 
          <Fragment>
-             {tender?.tender[0]?.commonInfo ? (
             <PageContainer>
                 <LeftSideSection35>
                     <BorderedComtainer>
@@ -540,6 +540,6 @@ export const TenderCard = () => {
                     }
                     <JsonRenderer tenderID={id}/>
                 </RightSideSection65>
-            </PageContainer> ) : (  <JsonRenderer tenderID={id}/> )}
+            </PageContainer>
         </Fragment>
     )}
