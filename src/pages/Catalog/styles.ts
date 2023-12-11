@@ -28,3 +28,10 @@ export const ShowCount = styled.div`
   display: flex;
   gap: 20px;
 `;
+export const LoaderTest = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

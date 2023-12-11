@@ -2,12 +2,12 @@ import {FC, Fragment, useEffect, useState} from "react";
 import { TenderPreiewCard44, TenderPreiewCard223 } from "../../components/TenderPreviewCard";
 import {PageContainer} from "../TenderCard/styles";
 import tendersDB from './many_tenders.json'
-import {CatalogPage, DocumentsCount, FindByIDButton, FinderByID, ShowCount} from "./styles";
+import {CatalogPage, DocumentsCount, FindByIDButton, FinderByID, ShowCount, LoaderTest} from "./styles";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {TextBlack14pxRegular, TextBlack22pxRegular, TextGray14pxRegular} from "../../constants/fonts";
 import {FlexRow, FlexTextRow} from "../../containers/containers";
-
+import { TailSpin } from 'react-loader-spinner';
 
 interface Tender{
     fz? : string
@@ -20,6 +20,7 @@ export const Catalog: FC = () => {
     const [countItems, setCountItems] = useState(10);
     const [findedTenderId, setFindedTenderId] = useState('')
     const [fz, setFz] = useState('')
+    const [loading, setLoading] = useState(true)
 
 
 
@@ -30,6 +31,7 @@ export const Catalog: FC = () => {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}client/tenders?page=${currentPage}&perPage=20${fz !== '' ? '&fz='+fz : ''}`,
                     { timeout: 0, maxContentLength: 0});
                 setTenders(response.data); // Обновите состояние данными из ответа
+                setLoading(false)
             } catch (error) {
                 console.error('Ошибка при выполнении запроса:', error);
             }
@@ -75,6 +77,11 @@ export const Catalog: FC = () => {
     // @ts-ignore
     return (
         <Fragment>
+            {loading ? (
+                <LoaderTest>
+                    <TailSpin color="#3294F4" height={150} width={150} />
+                </LoaderTest>
+            ) : (
             <CatalogPage>
                 <FlexTextRow style={{alignItems: 'center', gap: '20px'}}>
                     <TextBlack22pxRegular>Результаты поиска</TextBlack22pxRegular>
@@ -122,6 +129,7 @@ export const Catalog: FC = () => {
                 {/*    </ShowCount>*/}
                 {/*</FlexRow>*/}
             </CatalogPage>
+            )}
         </Fragment>
     );
 };
