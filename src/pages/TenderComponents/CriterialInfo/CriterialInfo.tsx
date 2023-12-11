@@ -11,8 +11,6 @@ interface Criterion {
 }
 
 interface Indicator {
-    name: string | undefined;
-    value: string;
     details: Detail[];
     purchaseObjectCharsInfo: PurchaseObjectCharsInfo;
     addInfo?: string;
@@ -59,8 +57,7 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
             const { indicatorInfo } = indicatorsInfo;
 
             const indicators: Indicator[] = [indicatorInfo].flat().map((one) => {
-                const name = one.qualPurchaseParticipantsInfo?.name;
-                const { value, detailIndicatorsInfo, purchaseObjectCharsInfo, addInfo } = one;
+                const { detailIndicatorsInfo, purchaseObjectCharsInfo, addInfo } = one;
                 const details: Detail[] = [detailIndicatorsInfo].flat().map((one) => {
                     return [one.detailIndicatorInfo].flat().map((one) => {
                         const { value, indicatorInfo } = one;
@@ -73,8 +70,6 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                     });
                 }).flat();
                 return {
-                    name,
-                    value,
                     details,
                     purchaseObjectCharsInfo,
                     addInfo,
@@ -110,9 +105,6 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                                 <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{crit?.name}</TextBlack14pxRegular></TableCell>
                                 <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{crit?.value}</TextBlack14pxRegular></TableCell>
                             </TableRow>
-                            <TableRow>
-                                <TableCell> <TextGray14pxRegular> Показатели критерия оценки заявок </TextGray14pxRegular></TableCell>
-                            </TableRow>
                             </thead>
                             <tbody>
 
@@ -122,11 +114,17 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                                                 <Table>
                                                     <thead>
                                                     <TableRow>
-                                                        <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{indicator.name}</TextBlack14pxRegular></TableCell>
-                                                        <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{indicator.value}</TextBlack14pxRegular></TableCell>
+                                                        <TableCell><TextGray14pxRegular style={{width: '35%'}}>Показатели критерия оценки заявок</TextGray14pxRegular></TableCell>
                                                     </TableRow>
                                                     </thead>
                                                          <tbody>
+                                                         <TableRow>
+                                                             <TableCell><TextGray14pxRegular style={{width: '35%'}}>НАИМЕНОВАНИЕ ПОКАЗАТЕЛЯ</TextGray14pxRegular></TableCell>
+                                                             <TableCell><TextGray14pxRegular style={{width: '35%'}}>ЗНАЧИМОСТЬ ПОКАЗАТЕЛЯ, %</TextGray14pxRegular></TableCell>
+                                                             <TableCell><TextGray14pxRegular style={{width: '35%'}}>ДОПОЛНИТЕЛЬНАЯ
+                                                                 ИНФОРМАЦИЯ О СОДЕРЖАНИИ
+                                                                 И ПОРЯДКЕ ОЦЕНКИ ПО ПОКАЗАТЕЛЮ</TextGray14pxRegular></TableCell>
+                                                         </TableRow>
                                                             {indicator.details.map((detail, detailIndex) => (
                                                                 <TableRow>
                                                                     <TableCell><TextBlack14pxRegular style={{width: '35%'}}>{detail.name}</TextBlack14pxRegular></TableCell>
