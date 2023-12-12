@@ -93,7 +93,7 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
               <TableRow>
                   <TableCell> <TextGray14pxRegular style={{width: '35%'}}>Наименование критерия </TextGray14pxRegular> </TableCell>
                   <TableCell><TextGray14pxRegular style={{width: '35%'}}>Значимость критерия, %</TextGray14pxRegular> </TableCell>
-            </TableRow>
+                </TableRow>
             </thead>
             <tbody>
             {critData.map((crit, index) => (
@@ -107,7 +107,6 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                             </TableRow>
                             </thead>
                             <tbody>
-
                                     {crit?.indicators?.map((indicator, indIndex) => (
                                         <TableRow>
                                             <TableCell>
@@ -146,7 +145,6 @@ export const CriterialInfo: FC<{ criterias: any[] }> = ({ criterias }) => {
                             </tbody>
                         </Table>
                     </TableCell>
-
                                 {/*        <TableCell>{crit?.indicators?.map((indicator) => indicator.purchaseObjectCharsInfo?.name)}</TableCell>*/}
                                 {/*        <TableCell>{crit?.indicators?.map((indicator) => indicator.addInfo)}</TableCell>*/}
 
