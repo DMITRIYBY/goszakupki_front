@@ -22,7 +22,7 @@ import {useParams} from "react-router-dom";
 import {format, parseISO} from "date-fns";
 import JsonRenderer from "../JsonRenderer";
 import {testTender1} from "./testTender1";
-import {CriterialInfo} from "../TenderComponents/CriterialInfo/CriterialInfo";
+import {CriterialInfoFixed} from "../TenderComponents/CriterialInfo/CriterialInfoFixed";
 import {ZakupkiInfo} from "../../components/ZakupkiInfo/ZakupkiInfo";
 import { TailSpin } from 'react-loader-spinner';
 
@@ -650,10 +650,10 @@ export const TenderCard = () => {
                     </BorderedComtainer>
                     {
                         tender?.tender[0]?.notificationInfo?.criteriaInfo ? (
-                           <CriterialInfo criterias={tender?.tender[0]?.notificationInfo?.criteriaInfo?.criterionInfo}/>
+                           <CriterialInfoFixed criterias={tender?.tender[0]?.notificationInfo?.criteriaInfo?.criterionInfo}/>
                         ) : null
                     }
-                    <JsonRenderer tenderID={id}/>
+                    {/*<JsonRenderer tenderID={id}/>*/}
                 </RightSideSection65>
             </PageContainer>
                  )}
