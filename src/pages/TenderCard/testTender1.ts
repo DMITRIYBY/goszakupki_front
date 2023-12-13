@@ -7,7 +7,7 @@ export const testTender1 = {
     "protocolDeviation": [],
     "protocolEvDevCancel": [],
     "protocolEvasion": [],
-    "result": [],
+    "result": [{ createDate: ""}],
     "tender": [
         {
             "_id": "6561a40b63ca1e084f16ea80",
