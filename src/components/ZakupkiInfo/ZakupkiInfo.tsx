@@ -1,7 +1,8 @@
 import {BorderedComtainer, Table, TableCell, TableRow} from "../../pages/TenderCard/styles";
 import {FlexTextColumn, FlexTextRow} from "../../containers/containers";
 import {TextBlack14pxBold, TextBlack14pxRegular, TextBlack22pxBold, TextGray14pxRegular} from "../../constants/fonts";
-import {FC} from "react";
+import {FC, Fragment} from "react";
+import {ZakupkiCharacteristics} from "./ZakupkiCharacteristics";
 
 
 interface IZakupkiInfo {
@@ -28,8 +29,7 @@ interface Info {
     quantity: any
 }
 //@ts-ignore
-export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
- setTimeout(() => console.log(data), 3000);
+export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data, extradata}) => {
 //@ts-ignore
    const info: Info[] | null = data?.purchaseObject ? [data.purchaseObject].flat().map((one: IPurchaseObject&unknown) => {
         let characteristics;
@@ -70,38 +70,35 @@ export  const ZakupkiInfo: FC<IZakupkiInfo> = ({data}) => {
                                     </TableRow>
                                     {
                                         info.map((item, index: number) => item ? (
-                                                <TableRow key={index}>
+                                            <Fragment key={index}>
+                                                <TableRow>
                                                     <TableCell>
-                                                        {item.OKPD2?.code}
+                                                        {item.OKPD2?.OKPDCode || item.OKPD2?.code }
                                                     </TableCell>
                                                     <TableCell>
-                                                        <FlexTextColumn key={index}>
-                                                            <FlexTextRow>
-                                                                {item.name ? (
-                                                                    <TextBlack14pxRegular key={index}>{item?.name}</TextBlack14pxRegular>
-                                                                ) : null}
-                                                            </FlexTextRow>
-                                                            {
-                                                                item.characteristics ? (
-
-                                                                    <FlexTextColumn key={index}>
-                                                                        {[item.characteristics].flat().map((item,index) => (
-                                                                            <FlexTextRow>
-                                                                                    <TextGray14pxRegular key={index}>{item?.name } {JSON.stringify(item?.values?.value) || ''}</TextGray14pxRegular>
-                                                                            </FlexTextRow>
-                                                                         ))
-                                                                        }
-                                                                    </FlexTextColumn>
-                                                                ) :   null
-                                                            }
-                                                        </FlexTextColumn>
+                                                        <FlexTextRow>
+                                                            {item.name ? (
+                                                                <TextBlack14pxRegular key={index}>{item?.name}</TextBlack14pxRegular>
+                                                            ) : null}
+                                                        </FlexTextRow>
                                                     </TableCell>
                                                     <TableCell>{item?.OKEI?.name}</TableCell>
                                                     <TableCell>{item?.quantity?.value}</TableCell>
                                                     <TableCell>{item?.price}</TableCell>
                                                     <TableCell>{item?.sum}</TableCell>
                                                 </TableRow>
-                                            ) : null)
+                                                {item.characteristics && (
+                                                    <TableRow>
+                                                        <TableCell colSpan={6}>
+                                                            <ZakupkiCharacteristics
+                                                                data={item.characteristics}
+                                                                extradata={{ name: extradata, quantity: item?.quantity?.value }}
+                                                            />
+                                                        </TableCell>
+                                                    </TableRow>
+                                                )}
+                                            </Fragment>
+                                        ) : null)
                                     }
                                     </tbody>
                                 </Table>
